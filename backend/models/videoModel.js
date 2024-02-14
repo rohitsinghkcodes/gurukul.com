@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema(
+const videoSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -10,29 +10,14 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
+    link: {
+      type: String,
       required: true,
     },
     course: {
       type: mongoose.ObjectId,
       ref: "course",
       required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-    MRP: {
-      type: Number,
-      default: 0,
-    },
-    image: {
-      data: Buffer,
-      contentType: String,
-    },
-    shipping: {
-      type: Boolean,
     },
     slug: {
       type: String,
@@ -44,4 +29,4 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("products", productSchema);
+export default mongoose.model("videos", videoSchema);

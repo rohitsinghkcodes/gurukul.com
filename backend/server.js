@@ -6,7 +6,7 @@ import connectDB from "./config/db_connection.js";
 import authRoutes from "./routes/authRoute.js";
 import cors from "cors";
 import courseRoutes from "./routes/courseRoutes.js";
-import productRoutes from "./routes/productRoutes.js";
+import videoRoutes from "./routes/videoRoutes.js";
 import formidable from "express-formidable";
 
 //configure env
@@ -26,7 +26,7 @@ app.use(cors());
 //routes-> now we can use these routes from anywhere
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/courses", courseRoutes);
-app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/videos", videoRoutes);
 
 // Create REST api
 app.get("/", (req, res) => {
