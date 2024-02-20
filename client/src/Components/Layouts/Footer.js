@@ -21,7 +21,7 @@ const Footer = () => {
     <li className="nav-item"><Link to="/policy">Privacy Policy</Link></li>
   </ul>
   <hr className="mx-5"/>
-  <h5 className="text-center text-muted text-light">All rights reserved &copy; ROHIT KUMAR SINGH</h5>
+  <h5 className="text-center  text-light">All rights reserved &copy; ROHIT KUMAR SINGH</h5>
 </footer>
 
   );

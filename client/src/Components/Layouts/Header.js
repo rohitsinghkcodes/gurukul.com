@@ -77,10 +77,12 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/videos" className="nav-link" href="#">
-                    Youtube Videos
-                  </Link>
-                </li>
+                    <Link to={`/all-courses`} className="nav-link">
+                      All Courses
+                    </Link>
+                  </li>
+                {/* CATEGORIES DROPDOWN STARTS HERE */}
+              
               </ul>
             </div>
             <div className="searchBox">
@@ -88,36 +90,7 @@ const Header = () => {
             </div>
 
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              {/* CATEGORIES DROPDOWN STARTS HERE */}
-              <li className="nav-item dropdown mx-2 ">
-                <Link
-                  className="nav-link dropdown-toggle "
-                  to={"/categories"}
-                  data-bs-toggle="dropdown"
-                >
-                  Courses
-                </Link>
-
-                <ul className="dropdown-menu dropdown-menu-lg-end">
-                  <li>
-                    <Link to={`/categories`} className="dropdown-item">
-                      All Courses
-                    </Link>
-                  </li>
-                  {categories?.map((c) => (
-                    <li key={c._id}>
-                      <Link
-                        to={`/category/${c.slug}`}
-                        className="dropdown-item "
-                        key={c._id}
-                      >
-                        {c.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-              {/* CATEGORIES DROPDOWN ENDS HERE */}
+              
 
               {!auth.user ? (
                 <>

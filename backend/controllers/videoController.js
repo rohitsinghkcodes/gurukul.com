@@ -188,7 +188,7 @@ export const videoCountController = async (req, res) => {
   }
 };
 
-//* SEARCH PRODUCTS CONTROLLER || GET
+//* SEARCH Video CONTROLLER || GET
 export const searchVideoController = async (req, res) => {
   try {
     const { keyword } = req.params;

@@ -15,12 +15,20 @@ BODY CSS
 body {
   /* background-image: linear-gradient(0deg, #4a9fff 20px, #a0a0a0 100%); */
   /* font-family: "Poppins", sans-serif; */
-  background-color: rgb(30, 61, 97);
+  background-color: #111111;
   color: wheat;
-
 }
 
-.dark{
+.card-bg {
+  background-color: #98a2fa10;
+}
+
+.vid-bg {
+  background-color: #5528f748;
+  color: white;
+}
+
+.dark {
   background-color: #000000c4 !important;
 }
 
@@ -33,7 +41,8 @@ NAVBAR CSS
   font-size: 17px;
   line-height: 26px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-
+  background-color: #161722 !important;
+  color: white !important;
 }
 
 .navbar-brand {
@@ -41,8 +50,9 @@ NAVBAR CSS
 }
 
 .nav-link {
-  margin-left: 1px;
+  margin-left: 2px;
   padding: 2px;
+  color: white !important;
 }
 
 .nav-link:hover {
@@ -56,7 +66,7 @@ NAVBAR CSS
 FOOTER CSS
 ##################### */
 .footer {
-  background-color: #82032e !important;
+  background-color: #161722 !important;
 }
 .footer .text-center {
   padding-bottom: 8px;
@@ -179,21 +189,22 @@ CONTACT PAGE CSS
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: auto;
-  min-width: 20%;
+  min-width: 30%;
+  margin-right: 10px;
 }
 
 .search-field {
-  color: #000000 !important;
+  color: #ffffff !important;
   border-left: 1px solid #82032d34;
   border-top: 1px solid #82032d34;
   border-bottom: 1px solid #82032d34;
   border-right: none;
 
-  background-color: #e7e7e769;
+  background-color: #e7e7e725;
 }
 
 .search-field::placeholder {
-  color: #000000a9 !important;
+  color: #cccccca9 !important;
   background-color: transparent !important;
   font-size: 15px;
 }
@@ -201,7 +212,7 @@ CONTACT PAGE CSS
 .search-field:focus {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.658) !important;
   border-color: #0000008d !important;
-  background-color: #e7e7e7c0;
+  background-color: #a8a8a838;
   border-radius: 20px;
 }
 
@@ -283,7 +294,7 @@ CONTACT PAGE CSS
   text-decoration: none;
 }
 .category-tiles:hover {
-  background-color: #ffffffb9;
+  background-color: #ffffff4b;
 }
 
 /* TABLE CSS */
@@ -304,4 +315,3 @@ CONTACT PAGE CSS
 .order-head {
   color: rgb(187, 187, 187);
 }
-

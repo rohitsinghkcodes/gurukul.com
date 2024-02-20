@@ -12,7 +12,7 @@ const SearchComponent = () => {
       e.preventDefault();
       try {
         const { data } = await axios.get(
-          `/api/v1/products/search/${values.keyword}`
+          `/api/v1/videos/search/${values.keyword}`
         );
         setValues({ ...values, results: data });
         navigate("/search");

@@ -55,7 +55,7 @@ router.get("/video-count", videoCountController);
 router.get("/search/:keyword", searchVideoController);
 
 //~  category VideoS-main
-router.get("/cource-video/:slug", courseVideoController);
+router.get("/course-video/:slug", courseVideoController);
 
 //exporting the routers
 export default router;

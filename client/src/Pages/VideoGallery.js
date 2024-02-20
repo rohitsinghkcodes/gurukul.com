@@ -1,83 +1,84 @@
-import React from "react";
 import Layout from "../Components/Layouts/Layout";
 import ReactPlayer from "react-player/lazy";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const VideoGallery = () => {
-  // const cardData = Array.from({ length: 5 }, (_, index) => index);
+  const params = useParams();
+  const navigate = useNavigate();
+  const [videosList, setVideosList] = useState([]);
+  const [course, setCourse] = useState("");
+  const [video, setVideo] = useState({});
+
+
+
+  //*GET ALL VIDEOS
+  const getAllVideos = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/videos/course-video/${params.slug}`
+      );
+      if (data?.success) {
+        setVideosList(data?.videos);
+        setCourse(data?.course.name);
+        setVideo(data?.videos[0]);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong while getting getAllVideos!");
+    }
+  };
+
+  useEffect(() => {
+    getAllVideos();
+    //eslint-disable-next-line
+  }, []);
   return (
     <Layout>
-      {/* <div className="container mt-5 text-poppins mb-5 ">
-        <h1 className=" mb-2 ms-4 ">Youtube Videos</h1>
-        <div className="d-flex justify-content-center row mx-4 ">
-          {cardData.map((index) => (
-            <div
-              className="card mb-3 rounded-4 px-4"
-              style={{ minWidth: "100vh" }}
-              key={index}
-            >
-              <div className="row g-0 ">
-                <div className="col-md-2 py-4">
-                  <img 
-                    src="https://cdn.pixabay.com/photo/2020/03/19/13/58/youtube-4947559_1280.jpg"
-                    className="img-fluid  rounded-4 "
-                    alt="..."
-                  />
-                </div>
-                <div className="col-md-9 py-3">
-                  <div className="card-body ">
-                    <h5 className="card-title ">Video {index}</h5>
-                    <p className="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p className="card-text">
-                      <small className="text-body-secondary">
-                        Last updated 3 mins ago
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
       <div className="m-4">
         <div className="row">
           <div className="col-md-4">
-            <div className="card text-light bg-dark p-3 rounded-4">
-              <h2>Algorithms</h2>
-              <p>Title number 1</p>
-              <p>Title number 2</p>
-              <p>Title number 3</p>
-              <p>Title number 4</p>
-              <p>Title number 5</p>
-              <p>Title number 6</p>
+            <div className="card text-light card-bg p-2 rounded-4">
+              <h2 className="p-2">{course}</h2>
+              {videosList.map((v) => (
+                <div
+                  className={`card  p-3 mt-2 ${
+                    v?._id == video?._id ? "vid-bg" : "bg-black text-light"
+                  }`}
+                  onClick={() => setVideo(v)}
+                >
+                  <div className="row">
+                    <div className="col-4">
+                      <div >
+                        <img
+                          src={`https://img.youtube.com/vi/7KDRqBpT8NA/mqdefault.jpg`}
+                          alt=""
+                          width={"98%"}
+                        />
+                      </div>
+                    </div>
+                    <div className="col ms-1">
+                      <h6>{v.name}</h6>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           <div className="col-md-8">
-          <div className="player-container">
-      <ReactPlayer
-        url={[
-          "https://www.youtube.com/watch?v=oUFJJNQGwhk",
-          "https://www.youtube.com/watch?v=jNgP6d9HraI",
-        ]}
-        width="100%"
-        height="480px"
-        controls
-      />
-    </div>
-            <div className="card text-light bg-dark p-3 rounded-4 mt-2">
-              <h2 className="p-2 mt-3">
-                Youtube video description || New Video
-              </h2>
-              <p className="p-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                assumenda molestias sapiente tempora sint quas. Nostrum, optio
-                veniam accusamus a voluptates in reiciendis voluptatum inventore
-                minus culpa eligendi debitis laborum.
-              </p>
+            <div className="player-container">
+              <ReactPlayer
+                url={video?.link}
+                width="100%"
+                height="480px"
+                controls
+              />
+            </div>
+            <div className="card text-light card-bg p-3 rounded-4 mt-3">
+              <h2 className="p-2 mt-3">{video?.name}</h2>
+              <p className="p-2">{video?.description}</p>
             </div>
           </div>
         </div>

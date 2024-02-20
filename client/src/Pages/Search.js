@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import { useCart } from "../Context/cartContext.js";
 import { toast } from "react-toastify";
 
-
 const Search = () => {
   const [values] = useSearch();
   const [cart, setCart] = useCart();
 
   return (
     <Layout title={"All products | Search"}>
-      <div className="row m-4" >
+      <div className="row m-4">
         <div className="col-md-12 ">
           <div style={{ color: "white", margin: "2px" }}>
             {values?.results.length < 1 ? (
@@ -23,23 +22,14 @@ const Search = () => {
               <h5>{`Search Results: ${values?.results.length} Products Found`}</h5>
             )}
           </div>
-          <div className="d-flex flex-wrap " >
+          <div className="d-flex flex-wrap ">
             {values?.results.map((product) => (
               <div
                 className="card m-2 bg-dark product-card  "
                 style={{ width: "17rem" }}
                 key={product._id}
               >
-                <Link
-                  to={`/product/${product.slug}`}
-                  className="product-link"
-                >
-                  <img
-                    src={`/api/v1/products/product-image/${product._id}`}
-                    className="product-img"
-                    style={{ height: "17rem", width: "17rem" }}
-                    alt={product.name}
-                  />
+                <Link to={`/product/${product.slug}`} className="product-link">
                   <div className="card-body product-card">
                     <h6
                       className="card-title"
@@ -65,48 +55,6 @@ const Search = () => {
                     >
                       {product.description}
                     </p>
-                    <h6 className="card-title" style={{ fontSize: "28px" }}>
-                      <span
-                        style={{
-                          fontSize: "13px",
-                          color: "#a6a6a6",
-                          verticalAlign: "super",
-                        }}
-                      >
-                        ₹
-                      </span>
-                      {product.price}
-                      <span
-                        className="ms-1"
-                        style={{ fontSize: "14px", color: "#a6a6a6" }}
-                      >
-                        MRP:{" "}
-                        <span
-                          style={{
-                            textDecoration: "line-through",
-                            fontSize: "13px",
-                            color: "#a6a6a6",
-                          }}
-                        >
-                          ₹{product.MRP ? product.MRP : product.price}
-                        </span>
-                        <span
-                          className="ms-1"
-                          style={{
-                            fontSize: "14px",
-                            color: "#3cd200",
-                          }}
-                        >
-                          (
-                          {product.MRP
-                            ? Math.round(
-                                100 - (100 * product.price) / product.MRP
-                              )
-                            : 0}
-                          % off)
-                        </span>
-                      </span>
-                    </h6>
                   </div>
                 </Link>
 

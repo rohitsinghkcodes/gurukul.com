@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./Pages/HomePage.js";
 import About from "./Pages/About.js";
 import Contact from "./Pages/Contact.js";
 import Policy from "./Pages/Policy.js";
@@ -11,17 +10,19 @@ import ForgotPassword from "./Pages/Auth/ForgotPassword.js";
 import AdminRoute from "./Components/Routes/AdminRoutes.js";
 import AdminDashboard from "./Pages/Admin/AdminDashboard.js";
 import CreateCourse from "./Pages/Admin/CreateCourse.js";
-import CreateProduct from "./Pages/Admin/CreateProduct.js";
+import CreateVideo from "./Pages/Admin/AddVideo.js";
 import Profile from "./Pages/User/Profile.js";
-import Products from "./Pages/Admin/Products.js";
-import UpdateProduct from "./Pages/Admin/UpdateProduct.js";
+import Products from "./Pages/Admin/AllCoursesVideos.js";
 import Search from "./Pages/Search.js";
 import ProductDetails from "./Pages/ProductDetails.js";
-import Categories from "./Pages/Coursess.js";
-import CategoryProduct from "./Pages/CategoryProduct.js";
+import Courses from "./Pages/Courses.js";
+import CategoryProduct from "./Pages/CoursesPlaylist.js";
 import LandingPage from "./Pages/LandingPage.js";
 import ResearchPapers from "./Pages/ResearchPapers.js";
 import VideoGallery from "./Pages/VideoGallery.js";
+import CourseVideos from "./Pages/Admin/CourseVideos.js";
+import UpdateVideoDetails from "./Pages/Admin/UpdateVideoDetails.js";
+
 
 function App() {
   return (
@@ -29,13 +30,13 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/papers" element={<ResearchPapers />} />
-        <Route path="/videos" element={<VideoGallery />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/course/videos/:slug" element={<VideoGallery />} />
+        {/* <Route path="/home" element={<HomePage />} /> */}
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/search" element={<Search />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/category/:slug" element={<CategoryProduct />} />
+        <Route path="/all-courses" element={<Courses />} />
+        <Route path="/course/:slug" element={<CategoryProduct />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         {/* USER ROUTES */}
         <Route path="/" element={<PrivateRoute />}>
@@ -45,10 +46,11 @@ function App() {
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCourse />} />
-          <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/create-product" element={<CreateVideo />} />
+          <Route path="admin/products/:slug" element={<CourseVideos />} />
           <Route
-            path="admin/update-product/:slug"
-            element={<UpdateProduct />}
+            path="admin/products/:slug/update-video/:slug"
+            element={<UpdateVideoDetails />}
           />
           <Route path="admin/products" element={<Products />} />
         </Route>

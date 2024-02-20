@@ -13,7 +13,7 @@ const Courses = () => {
           {courses.map((c) => (
             <div className="col-md-4 d-flex justify-content-center" key={c._id}>
               <Link
-                to={`/course/${c.slug}`}
+                to={`/course/videos/${c.slug}`}
                 className=" card category-tiles p-5 m-2"
                 style={{ minWidth: "50vh" }}
               >
