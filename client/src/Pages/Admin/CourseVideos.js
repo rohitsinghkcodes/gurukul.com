@@ -5,6 +5,7 @@ import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import ReactPlayer from "react-player";
 const { Option } = Select;
 
 const CourseVideos = () => {
@@ -37,28 +38,53 @@ const CourseVideos = () => {
   return (
     <Layout>
       <div className="container mt-4">
-        <h1>{course}</h1>
-        {videosList.map((v) => (
-          <div className="card p-3 mt-2">
-            <div className="row">
-              <div className="col-6">
-                <h4>{v.name}</h4>
-                <p>{v.description}</p>
-              </div>
+        <h1>Course: {course}</h1>
+       <div className="d-flex flex-wrap">
+       {videosList.map((product) => (
+          <div
+            className="card m-2 bg-dark product-card"
+            style={{ width: "20rem" }}
+          >
+            <div className="d-flex justify-content-center rounded-5 p-3 pb-0">
+              <ReactPlayer
+                url="https://www.youtube.com/watch?v=7KDRqBpT8NA"
+                controls
+                light={true}
+                width={"24rem"}
+                height={"10rem"}
+              />
+            </div>
 
-              <div className="col">
-                <div
-                  className="btn btn-warning ms-2 px-5"
-                  onClick={() => {
-                    navigate(`update-video/${v.slug}`);
-                  }}
-                >
-                  edit
-                </div>
-              </div>
+            <div className="card-body product-card">
+              <h6
+                className="card-title"
+                style={{
+                  overflow: "hidden",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 1,
+                  WebkitBoxOrient: "vertical",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                }}
+              >
+                {product.name}
+              </h6>
+              <p
+                className="card-text"
+                style={{
+                  overflow: "hidden",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                {product.description}
+              </p>
+              <div className="btn btn-outline-warning w-100 rounded-3">Edit</div>
             </div>
           </div>
         ))}
+       </div>
       </div>
     </Layout>
   );
