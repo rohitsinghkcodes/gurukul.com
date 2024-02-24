@@ -41,7 +41,7 @@ const VideoGallery = () => {
             <div className="col-md-4">
               <div className="card card-bg p-2 rounded-4">
                 <h2 className="px-2 pt-2 ">{course} Playlist</h2>
-                {videosList.map((v) => (
+                {videosList.map((v, i) => (
                   <div
                     className={`card  p-3 mt-2 ${
                       v?._id == video?._id ? "vid-bg" : "bg-black text-light"

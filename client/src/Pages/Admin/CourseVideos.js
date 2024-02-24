@@ -39,52 +39,54 @@ const CourseVideos = () => {
     <Layout>
       <div className="container mt-4">
         <h1>Course: {course}</h1>
-       <div className="d-flex flex-wrap">
-       {videosList.map((product) => (
-          <div
-            className="card m-2 bg-dark product-card"
-            style={{ width: "20rem" }}
-          >
-            <div className="d-flex justify-content-center rounded-5 p-3 pb-0">
-              <ReactPlayer
-                url="https://www.youtube.com/watch?v=7KDRqBpT8NA"
-                controls
-                light={true}
-                width={"24rem"}
-                height={"10rem"}
-              />
-            </div>
+        <div className="d-flex flex-wrap">
+          {videosList.map((v) => (
+            <div className="card m-2 product-card" style={{ width: "20rem" }}>
+              <div className="d-flex justify-content-center rounded-5 p-3 pb-0">
+                <ReactPlayer
+                  url="https://www.youtube.com/watch?v=7KDRqBpT8NA"
+                  controls
+                  light={true}
+                  width={"24rem"}
+                  height={"10rem"}
+                />
+              </div>
 
-            <div className="card-body product-card">
-              <h6
-                className="card-title"
-                style={{
-                  overflow: "hidden",
-                  display: "-webkit-box",
-                  WebkitLineClamp: 1,
-                  WebkitBoxOrient: "vertical",
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                }}
-              >
-                {product.name}
-              </h6>
-              <p
-                className="card-text"
-                style={{
-                  overflow: "hidden",
-                  display: "-webkit-box",
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: "vertical",
-                }}
-              >
-                {product.description}
-              </p>
-              <div className="btn btn-outline-warning w-100 rounded-3">Edit</div>
+              <div className="card-body">
+                <h6
+                  className="card-title"
+                  style={{
+                    overflow: "hidden",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 1,
+                    WebkitBoxOrient: "vertical",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {v.name}
+                </h6>
+                <p
+                  className="card-text"
+                  style={{
+                    overflow: "hidden",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                  }}
+                >
+                  {v.description}
+                </p>
+                <div
+                  className="btn btn-outline-warning w-100 rounded-3"
+                  onClick={() => navigate(`update-video/${v.slug}`)}
+                >
+                  Edit
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-       </div>
+          ))}
+        </div>
       </div>
     </Layout>
   );

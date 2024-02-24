@@ -24,22 +24,18 @@ const HomePage = () => {
                 style={{ height: "60vh" }}
               >
                 <div className="carousel-item active">
+                  <img src="https://media.istockphoto.com/id/1284202542/vector/programming-language-python-conceptual-banner-education-coding-computer-language-python.jpg?s=612x612&w=0&k=20&c=DwTB320vMYH8MAnPjrwEeJqlWs1V4y10ExC0xcMmHig=" className="d-block w-100" alt="..." />
+                </div>
+                <div className="carousel-item">
                   <img
-                    src="https://img.freepik.com/free-vector/gradient-summer-background-videocalls_52683-63099.jpg?w=1060&t=st=1706892226~exp=1706892826~hmac=cd6435ea20dcddacd6af78d6d9ff35f0e2a7af78ff82ae4e5d3aef11d2ce3475"
+                    src="https://www.shutterstock.com/image-vector/concept-computer-programming-developing-software-600nw-2149658893.jpg"
                     className="d-block w-100"
                     alt="..."
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src="https://cdn.pixabay.com/photo/2016/07/12/19/51/americana-1512910_1280.png"
-                    className="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    src="https://wallpapers.com/images/hd/banner-5000-x-2500-picture-ujmnosb00yhs5z6i.jpg"
+                    src="https://img.freepik.com/premium-vector/colorful-banner-with-hands-working-computer-different-electronic-gadgets-devices-symbols-programming-software-development-program-coding_198278-4192.jpg"
                     className="d-block w-100"
                     alt="..."
                   />
@@ -88,7 +84,12 @@ const HomePage = () => {
                       className="card product-card"
                       style={{ width: "19rem" }}
                     >
-                      <div style={{ borderRadius: "20px 20px 0 0", overflow: "hidden" }}>
+                      <div
+                        style={{
+                          borderRadius: "20px 20px 0 0",
+                          overflow: "hidden",
+                        }}
+                      >
                         <ReactPlayer
                           url="https://www.youtube.com/watch?v=7KDRqBpT8NA"
                           controls

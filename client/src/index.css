@@ -53,12 +53,12 @@ NAVBAR CSS
 .nav-link {
   margin-left: 2px;
   padding: 2px;
-  color: white ;
+  color: white !important ;
 }
 
 .nav-link:hover {
   /* border: 1px solid; */
-  color: rgb(172, 90, 248);
+  color: rgb(172, 90, 248) !important;
 }
 
 /* #####################
@@ -76,9 +76,8 @@ FOOTER CSS
   color: white;
 }
 .footer a:hover {
-  color:  rgb(198, 136, 255);
+  color: rgb(198, 136, 255);
 }
-
 
 /* #####################
 PAGE NOT FOUND CSS
@@ -176,7 +175,7 @@ CONTACT PAGE CSS
 /* PRODUCT link */
 .product-link {
   text-decoration: none !important;
-  color: rgb(255, 255, 255) ;
+  color: rgb(255, 255, 255);
 }
 
 /* ROW CSS */
@@ -232,9 +231,8 @@ CONTACT PAGE CSS
   background-color: #00000044 !important;
   color: #ffffffda !important;
 }
-.product-card:hover{
+.product-card:hover {
   border-color: rgba(255, 255, 255, 0.932);
-
 }
 
 .card h1 {
@@ -319,12 +317,11 @@ CONTACT PAGE CSS
   color: rgb(187, 187, 187);
 }
 
-
 /* Landing page */
-.show-all{
+.show-all {
   text-decoration: none;
   color: white;
 }
-.show-all:hover{
+.show-all:hover {
   color: rgb(211, 211, 211);
 }

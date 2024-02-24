@@ -192,16 +192,18 @@ export const videoCountController = async (req, res) => {
 export const searchVideoController = async (req, res) => {
   try {
     const { keyword } = req.params;
+    const escapeRegExp = (string) => {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+    };
+
+    const escapedKeyword = escapeRegExp(keyword);
+
     const results = await videoModel.find({
-      $or: [
-        { name: { $regex: keyword, $options: "i" } },
-        { description: { $regex: keyword, $options: "i" } },
-      ],
+      $or: [{ name: { $regex: escapedKeyword, $options: "i" } }],
     });
 
     res.json(results);
   } catch (err) {
-    console.log(err);
     res.status(500).send({
       success: false,
       msg: "Error While Searching Videos!",
