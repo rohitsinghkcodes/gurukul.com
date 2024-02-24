@@ -1,5 +1,4 @@
 import slugify from "slugify";
-import fs from "fs";
 import videoModel from "../models/videoModel.js";
 import courseModel from "../models/courseModel.js";
 import dotenv from "dotenv";

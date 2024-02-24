@@ -7,7 +7,6 @@ import authRoutes from "./routes/authRoute.js";
 import cors from "cors";
 import courseRoutes from "./routes/courseRoutes.js";
 import videoRoutes from "./routes/videoRoutes.js";
-import formidable from "express-formidable";
 
 //configure env
 dotenv.config();
