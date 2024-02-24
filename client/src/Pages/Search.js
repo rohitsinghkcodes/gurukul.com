@@ -2,13 +2,11 @@ import Layout from "../Components/Layouts/Layout.js";
 import React from "react";
 import { useSearch } from "../Context/searchContext";
 import { Link } from "react-router-dom";
-import { useCart } from "../Context/cartContext.js";
 import { toast } from "react-toastify";
 import ReactPlayer from "react-player";
 
 const Search = () => {
   const [values] = useSearch();
-  const [cart, setCart] = useCart();
 
   return (
     <Layout title={"All products | Search"}>

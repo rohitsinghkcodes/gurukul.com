@@ -3,19 +3,14 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/authContext.js";
 import SearchComponent from "../Form/SearchComponent.js";
 import useCategory from "../../hooks/useCourse.js";
-import { useCart } from "../../Context/cartContext.js";
-import { Badge, Space } from "antd";
-import { BsCart3 } from "react-icons/bs";
-import { PiSignOutDuotone } from "react-icons/pi";
 import { MdSpaceDashboard } from "react-icons/md";
 import { IoLogOut } from "react-icons/io5";
-import { FaBoxOpen, FaRegUserCircle } from "react-icons/fa";
+import { FaBoxOpen, FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { toast } from "react-toastify";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  const [cart] = useCart();
   const location = useLocation();
   const categories = useCategory();
   //clear storage and set auth details after logging out => handled by this funtion
@@ -77,12 +72,11 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={`/all-courses`} className="nav-link">
-                      All Courses
-                    </Link>
-                  </li>
+                  <Link to={`/all-courses`} className="nav-link">
+                    All Courses
+                  </Link>
+                </li>
                 {/* CATEGORIES DROPDOWN STARTS HERE */}
-              
               </ul>
             </div>
             <div className="searchBox">
@@ -90,8 +84,6 @@ const Header = () => {
             </div>
 
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              
-
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -141,6 +133,9 @@ const Header = () => {
                       // if user is admin
                       <ul className="dropdown-menu dropdown-menu-lg-end">
                         <li>
+                          <Link to="/profile" className="dropdown-item">
+                            <FaUserCircle /> &nbsp; Profile
+                          </Link>
                           <Link
                             to={`/dashboard/${
                               auth?.user?.role === 1 ? "admin" : "user"
@@ -149,6 +144,7 @@ const Header = () => {
                           >
                             <MdSpaceDashboard /> &nbsp; Dashboard
                           </Link>
+
                           <Link
                             to="/login"
                             onClick={handleLogOut}
@@ -162,8 +158,6 @@ const Header = () => {
                   </li>
                 </>
               )}
-
-              
             </ul>
           </div>
         </div>

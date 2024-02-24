@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import CategoryForm from "../../Components/Form/CategoryForm";
+import CategoryForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
 

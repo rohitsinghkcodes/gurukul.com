@@ -5,7 +5,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { IoMdEye, IoMdEyeOff, IoMdClose } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
-import { PinList } from "../../Helpers/PinList";
 
 const Profile = () => {
   //context
@@ -85,17 +84,17 @@ const Profile = () => {
 
   // check pin availability
   const availableDelivery = () => {
-    if (!PinList.includes(pin)) {
-      toast.error(
-        `Sorry, We do not deliver at ${pin}!\nCheck your Pincode again!`,
-        {
-          style: {
-            width: "350px", // Set the desired width
-          },
-        }
-      );
-      return;
-    }
+    // if (!PinList.includes(pin)) {
+    //   toast.error(
+    //     `Sorry, We do not deliver at ${pin}!\nCheck your Pincode again!`,
+    //     {
+    //       style: {
+    //         width: "350px", // Set the desired width
+    //       },
+    //     }
+    //   );
+    //   return;
+    // }
 
     setAddress(`${addLine}\n PIN: ${pin}`);
     setEditAddress(false);
