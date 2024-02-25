@@ -117,11 +117,11 @@ const HomePage = () => {
                           style={{
                             overflow: "hidden",
                             display: "-webkit-box",
-                            WebkitLineClamp: 2,
+                            WebkitLineClamp: 3,
                             WebkitBoxOrient: "vertical",
                           }}
                         >
-                          ghikub{product.description}
+                          {product.description}
                         </p>
                       </div>
                     </div>

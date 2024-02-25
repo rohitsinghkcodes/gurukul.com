@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const { Option } = Select;
 
-const CreateProduct = () => {
+const AddVideosToCourse = () => {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
-  const [course, setCourse] = useState("")
+  const [course, setCourse] = useState("");
 
   //* GET ALL Courses
   const getAllCourses = async () => {
@@ -42,19 +42,17 @@ const CreateProduct = () => {
       return;
     }
     if (!name) {
-      toast.warning("NAME field is empty!");
+      toast.warning("tite field is empty!");
       return;
     }
     if (!description) {
-      toast.warning("DESCRIPTION field is empty!");
+      toast.warning("description field is empty!");
       return;
     }
     if (!link) {
       toast.warning("link field is empty!");
       return;
     }
-
-  
 
     try {
       const productData = new FormData();
@@ -88,7 +86,7 @@ const CreateProduct = () => {
           </div>
           <div className="col-md-9">
             <div className="card card-dash p-5 rounded-5">
-              <h3>Add Video To Course</h3>
+              <h3>Add Videos To Course</h3>
               <div className="m-1 ">
                 <Select
                   bordered={false}
@@ -107,13 +105,12 @@ const CreateProduct = () => {
                   ))}
                 </Select>
 
-                
                 <div className="mb-4">
                   <label className="form-label ">Video Title</label>
                   <input
                     type="text"
                     value={name}
-                    placeholder="Enter the name of product"
+                    placeholder="Enter the title of the video"
                     className=" form-control "
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -125,26 +122,22 @@ const CreateProduct = () => {
                   <textarea
                     type="text"
                     value={description}
-                    placeholder="Enter the description of product"
+                    placeholder="Enter the description of the video"
                     className="form-control "
                     style={{ height: "6rem" }}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="form-label text-light">
-                    Video Link
-                  </label>
+                  <label className="form-label text-light">Video Link</label>
                   <input
                     type="string"
                     value={link}
-                    placeholder="Enter the link of product"
+                    placeholder="Enter the link of the video"
                     className=" form-control "
                     onChange={(e) => setLink(e.target.value)}
                   />
                 </div>
-                
-                
 
                 <div className="mb-4">
                   <button
@@ -163,4 +156,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default AddVideosToCourse;

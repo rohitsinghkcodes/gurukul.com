@@ -10,7 +10,7 @@ import ForgotPassword from "./Pages/Auth/ForgotPassword.js";
 import AdminRoute from "./Components/Routes/AdminRoutes.js";
 import AdminDashboard from "./Pages/Admin/AdminDashboard.js";
 import CreateCourse from "./Pages/Admin/CreateCourse.js";
-import CreateVideo from "./Pages/Admin/AddVideo.js";
+import CreateVideo from "./Pages/Admin/AddVideosToCourse.js";
 import Profile from "./Pages/User/Profile.js";
 import Products from "./Pages/Admin/AllCoursesVideos.js";
 import Search from "./Pages/Search.js";

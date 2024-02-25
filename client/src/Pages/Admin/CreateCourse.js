@@ -5,22 +5,29 @@ import axios from "axios";
 import CategoryForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
+import Spinner from "../../Components/Spinner.js";
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(null);
   const [updatedName, setUpdatedName] = useState("");
+  const [updatedDescription, setUpdatedDescription] = useState("");
+
   //handle form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post("/api/v1/courses/create-course", {
         name,
+        description,
       });
       if (data.success) {
         toast.success(`${data.msg}`);
+        setName("");
+        setDescription("");
         getAllCategories();
       } else {
         toast.error(`${data.msg}`);
@@ -31,7 +38,7 @@ const CreateCategory = () => {
     }
   };
 
-  //* GET ALL CATEGORIES
+  //* GET ALL Courses
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get("/api/v1/courses/get-courses");
@@ -54,12 +61,13 @@ const CreateCategory = () => {
     try {
       const { data } = await axios.put(
         `/api/v1/courses/update-course/${selected._id}`,
-        { name: updatedName }
+        { name: updatedName, description: updatedDescription }
       );
       if (data.success) {
         toast.success(`${data.msg}`);
         setSelected(null);
         setUpdatedName(null);
+        setUpdatedDescription(null);
         setVisible(false);
         getAllCategories();
       } else {
@@ -74,7 +82,7 @@ const CreateCategory = () => {
     try {
       const { data } = await axios.delete(
         `/api/v1/courses/delete-course/${id}`,
-        { name: updatedName }
+        { name: updatedName, description: updatedDescription }
       );
       if (data.success) {
         toast.success(`${data.msg}`);
@@ -89,61 +97,76 @@ const CreateCategory = () => {
 
   return (
     <Layout title={"Dashboard - Categories"}>
-      <div className="text-center container-fluid p-3">
+      <div className=" container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <div className="card card-dash p-5 rounded-5">
+            <div className="card card-dash p-5 rounded-5  ">
               <h3>Manage Courses</h3>
               <div className="my-3 ">
                 <CategoryForm
                   handleSubmit={handleSubmit}
-                  value={name}
-                  setValue={setName}
+                  name={name}
+                  setName={setName}
+                  description={description}
+                  setDescription={setDescription}
                 />
               </div>
-              <div>
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Titles</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {categories?.map((c) => (
-                      <>
-                        <tr>
-                          <td key={c._id}>{c.name}</td>
-
-                          <td>
-                            <button
-                              className="btn btn-primary mx-2"
+              <h4 className="mt-4">Courses</h4>
+              <div className="d-flex flex-wrap ">
+                {categories.length < 1 ? (
+                  <div>
+                    <p className="text-light">Available 0 courses.</p>
+                  </div>
+                ) : (
+                  categories?.map((c) => (
+                    <div>
+                      <div
+                        className="card product-card p-3 m-1 "
+                        style={{ width: "20rem" }}
+                      >
+                        <div className="row">
+                          <div className="">
+                            <h4>{c.name}</h4>
+                            <h6
+                              style={{
+                                overflow: "hidden",
+                                display: "-webkit-box",
+                                WebkitLineClamp: 5,
+                                WebkitBoxOrient: "vertical",
+                              }}
+                            >
+                              {c.description}
+                            </h6>
+                          </div>
+                          <div className=" ">
+                            <div
+                              className="btn btn-sm btn-primary"
                               onClick={() => {
-
                                 setVisible(true);
                                 setUpdatedName(c.name);
+                                setUpdatedDescription(c.description);
                                 setSelected(c);
                               }}
                             >
                               Edit
-                            </button>
-                            <button
-                              className="btn btn-danger mx-2"
+                            </div>
+                            <div
+                              className="btn btn-sm btn-danger ms-2"
                               onClick={() => {
                                 handleDelete(c._id);
                               }}
                             >
                               Delete
-                            </button>
-                          </td>
-                        </tr>
-                      </>
-                    ))}
-                  </tbody>
-                </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -152,11 +175,14 @@ const CreateCategory = () => {
             onCancel={() => setVisible(false)}
             footer={null}
             open={visible}
+            width={900}
           >
             <CategoryForm
               edit={true}
-              value={updatedName}
-              setValue={setUpdatedName}
+              name={updatedName}
+              setName={setUpdatedName}
+              description={updatedDescription}
+              setDescription={setUpdatedDescription}
               handleSubmit={handleUpdate}
             />
           </Modal>

@@ -230,13 +230,16 @@ CONTACT PAGE CSS
   border-radius: 20px;
   background-color: #00000044 !important;
   color: #ffffffda !important;
+  h6{
+    color: rgba(255, 255, 255, 0.699);
+  }
 }
 .product-card:hover {
   border-color: rgba(255, 255, 255, 0.932);
 }
 
 .card h1 {
-  color: wheat;
+  color: blueviolet;
 }
 
 .product-img {
@@ -257,7 +260,7 @@ CONTACT PAGE CSS
 
 .card-dash {
   background-color: #31313120;
-  color: wheat;
+  color: rgb(171, 95, 243);
 }
 
 .submit-btn {

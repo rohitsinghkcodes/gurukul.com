@@ -4,10 +4,11 @@ import slugify from "slugify";
 //* CREATE NEW Course CONTROLLER
 export const createCourseController = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, description } = req.body;
     if (!name) {
       return res.status(401).send({ msg: "Name is required!" });
     }
+    
 
     const existingCourse = await courseModel.findOne({ name });
 
@@ -19,6 +20,7 @@ export const createCourseController = async (req, res) => {
 
     const course = await new courseModel({
       name,
+      description,
       slug: slugify(name),
     }).save();
 
@@ -38,11 +40,11 @@ export const createCourseController = async (req, res) => {
 //* UPDATE Course CONTROLLER
 export const updateCourseController = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, description } = req.body;
     const { id } = req.params;
     const course = await courseModel.findByIdAndUpdate(
       id,
-      { name, slug: slugify(name) },
+      { name, description, slug: slugify(name) },
       { new: true }
     );
     res.status(200).send({
