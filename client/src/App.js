@@ -23,7 +23,6 @@ import VideoGallery from "./Pages/VideoGallery.js";
 import CourseVideos from "./Pages/Admin/CourseVideos.js";
 import UpdateVideoDetails from "./Pages/Admin/UpdateVideoDetails.js";
 
-
 function App() {
   return (
     <>

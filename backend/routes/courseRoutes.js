@@ -5,8 +5,10 @@ import {
   courseController,
   getSingleCourseController,
   deleteCourseController,
+  courseImageController,
 } from "../controllers/courseController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import formidable from "express-formidable";
 
 //router object
 const router = express.Router();
@@ -15,14 +17,18 @@ const router = express.Router();
 //~ CREATE CATEGORY
 router.post(
   "/create-course",
+  requireSignIn,
+  isAdmin,
+  formidable(),
   createCourseController
 );
 
-//~ UPDATE CATEGORY
+//~ UPDATE COURSE
 router.put(
   "/update-course/:id",
   requireSignIn,
   isAdmin,
+  formidable(),
   updateCourseController
 );
 
@@ -41,7 +47,7 @@ router.delete(
 );
 
 //~ GET PRODUCT IMAGE
-router.get("/course-image/:cid", productImageController);
+router.get("/course-image/:cid", courseImageController);
 
 //exporting the routers
 export default router;

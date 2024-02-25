@@ -1,3 +1,4 @@
+import { Select } from "antd";
 import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
@@ -6,6 +7,7 @@ import CategoryForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
 import Spinner from "../../Components/Spinner.js";
+const { Option } = Select;
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -15,19 +17,45 @@ const CreateCategory = () => {
   const [selected, setSelected] = useState(null);
   const [updatedName, setUpdatedName] = useState("");
   const [updatedDescription, setUpdatedDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [updatedImage, setUpdatedImage] = useState("");
+  const [id, setId] = useState("");
 
   //handle form
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate if all fields are filled
+
+    if (!name) {
+      toast.warning("NAME field is empty!");
+      return;
+    }
+    if (!description) {
+      toast.warning("DESCRIPTION field is empty!");
+      return;
+    }
+    if (!image) {
+      toast.warning("Image field is empty!");
+      return;
+    }
+
     try {
-      const { data } = await axios.post("/api/v1/courses/create-course", {
-        name,
-        description,
-      });
+      const courseData = new FormData();
+      courseData.append("name", name);
+      courseData.append("description", description);
+      courseData.append("image", image);
+
+      const { data } = await axios.post(
+        "/api/v1/courses/create-course",
+        courseData
+      );
+
       if (data.success) {
         toast.success(`${data.msg}`);
         setName("");
         setDescription("");
+        setImage("");
         getAllCategories();
       } else {
         toast.error(`${data.msg}`);
@@ -55,21 +83,29 @@ const CreateCategory = () => {
     getAllCategories();
   }, []);
 
-  //update category
+  //*update course
   const handleUpdate = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
+      const courseData = new FormData();
+      courseData.append("name", updatedName);
+      courseData.append("description", updatedDescription);
+      updatedImage && courseData.append("image", updatedImage);
+
       const { data } = await axios.put(
         `/api/v1/courses/update-course/${selected._id}`,
-        { name: updatedName, description: updatedDescription }
+        courseData
       );
       if (data.success) {
         toast.success(`${data.msg}`);
         setSelected(null);
         setUpdatedName(null);
         setUpdatedDescription(null);
+        setUpdatedImage(null);
         setVisible(false);
+        toast.success("update successful");
         getAllCategories();
+        console.log(categories);
       } else {
         toast.error(`${data.msg}`);
       }
@@ -81,10 +117,9 @@ const CreateCategory = () => {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `/api/v1/courses/delete-course/${id}`,
-        { name: updatedName, description: updatedDescription }
+        `/api/v1/courses/delete-course/${id}`
       );
-      if (data.success) {
+      if (data?.success) {
         toast.success(`${data.msg}`);
         getAllCategories();
       } else {
@@ -103,16 +138,20 @@ const CreateCategory = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <div className="card card-dash p-5 rounded-5  ">
-              <h3>Manage Courses</h3>
-              <div className="my-3 ">
-                <CategoryForm
-                  handleSubmit={handleSubmit}
-                  name={name}
-                  setName={setName}
-                  description={description}
-                  setDescription={setDescription}
-                />
+            <div className="card card-dash p-2 rounded-5  ">
+              <div className="d-grid text-center align-items-center w-100 m-0">
+                <h3>Manage Courses</h3>
+                <div className="my-3 ">
+                  <CategoryForm
+                    handleSubmit={handleSubmit}
+                    name={name}
+                    setName={setName}
+                    description={description}
+                    setDescription={setDescription}
+                    image={image}
+                    setImage={setImage}
+                  />
+                </div>
               </div>
               <h4 className="mt-4">Courses</h4>
               <div className="d-flex flex-wrap ">
@@ -122,12 +161,23 @@ const CreateCategory = () => {
                   </div>
                 ) : (
                   categories?.map((c) => (
-                    <div>
+                    <div
+                      key={c._id}
+                      className="card product-card m-1"
+                      style={{ width: "22rem" }}
+                    >
                       <div
-                        className="card product-card p-3 m-1 "
-                        style={{ width: "20rem" }}
+                        style={{
+                          borderRadius: "20px 20px 0 0",
+                          overflow: "hidden",
+                        }}
                       >
-                        <div className="row">
+                        <img
+                          src={`/api/v1/courses/course-image/${c._id}`}
+                          alt="course-img"
+                          style={{ width: "22rem" }}
+                        />
+                        <div className="row p-3">
                           <div className="">
                             <h4>{c.name}</h4>
                             <h6
@@ -148,6 +198,7 @@ const CreateCategory = () => {
                                 setVisible(true);
                                 setUpdatedName(c.name);
                                 setUpdatedDescription(c.description);
+                                setId(c._id);
                                 setSelected(c);
                               }}
                             >
@@ -183,6 +234,9 @@ const CreateCategory = () => {
               setName={setUpdatedName}
               description={updatedDescription}
               setDescription={setUpdatedDescription}
+              id={id}
+              image={updatedImage}
+              setImage={setUpdatedImage}
               handleSubmit={handleUpdate}
             />
           </Modal>

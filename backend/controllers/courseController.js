@@ -1,5 +1,6 @@
 import courseModel from "../models/courseModel.js";
 import slugify from "slugify";
+import fs from "fs";
 
 //* CREATE NEW COURSE CONTROLLER || POST
 export const createCourseController = async (req, res) => {
@@ -32,8 +33,8 @@ export const createCourseController = async (req, res) => {
       slug: slugify(name),
     });
     if (image) {
-      newProduct.image.data = fs.readFileSync(image.path);
-      newProduct.image.contentType = image.type;
+      course.image.data = fs.readFileSync(image.path);
+      course.image.contentType = image.type;
     }
     await course.save();
 
@@ -75,8 +76,8 @@ export const updateCourseController = async (req, res) => {
     );
 
     if (image) {
-      product.image.data = fs.readFileSync(image.path);
-      product.image.contentType = image.type;
+      course.image.data = fs.readFileSync(image.path);
+      course.image.contentType = image.type;
     }
     await course.save();
 
@@ -138,7 +139,7 @@ export const getSingleCourseController = async (req, res) => {
 };
 
 //* COURSE IMAGE CONTROLLER || GET
-export const productImageController = async (req, res) => {
+export const courseImageController = async (req, res) => {
   try {
     const course = await courseModel.findById(req.params.cid).select("image");
 
