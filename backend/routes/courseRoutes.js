@@ -40,5 +40,8 @@ router.delete(
   deleteCourseController
 );
 
+//~ GET PRODUCT IMAGE
+router.get("/course-image/:cid", productImageController);
+
 //exporting the routers
 export default router;

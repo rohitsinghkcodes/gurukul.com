@@ -11,6 +11,10 @@ const courseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
     slug:{
         type: String,
         lowercase: true
