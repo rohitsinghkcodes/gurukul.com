@@ -6,6 +6,7 @@ import {
   getSingleCourseController,
   deleteCourseController,
   courseImageController,
+  courseVideosDeleteController,
 } from "../controllers/courseController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -35,10 +36,13 @@ router.put(
 //~ GET ALL CATEGORIES
 router.get("/get-courses", courseController);
 
-//~ GET SINGLE CATEGORY
+//~ GET SINGLE COURSE
 router.get("/get-single-course/:slug", getSingleCourseController);
 
-//~ DELETE CATEGORY
+//~ GET PRODUCT IMAGE
+router.get("/course-image/:cid", courseImageController);
+
+//! DELETE COURSE
 router.delete(
   "/delete-course/:id",
   requireSignIn,
@@ -46,8 +50,13 @@ router.delete(
   deleteCourseController
 );
 
-//~ GET PRODUCT IMAGE
-router.get("/course-image/:cid", courseImageController);
+//! DELETE COURSE WITH VIDEOS
+router.delete(
+  "/delete-complete-course/:id",
+  requireSignIn,
+  isAdmin,
+  courseVideosDeleteController
+);
 
 //exporting the routers
 export default router;

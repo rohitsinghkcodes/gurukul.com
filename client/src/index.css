@@ -24,11 +24,6 @@ body {
   color: blueviolet;
 }
 
-.vid-bg {
-  background-color: #5528f748;
-  color: white;
-}
-
 .dark {
   background-color: #000000c4 !important;
 }
@@ -47,7 +42,9 @@ NAVBAR CSS
 }
 
 .navbar-brand {
-  font-weight: 700;
+  h1 {
+    font-weight: 700;
+  }
 }
 
 .nav-link {
@@ -59,6 +56,11 @@ NAVBAR CSS
 .nav-link:hover {
   /* border: 1px solid; */
   color: rgb(172, 90, 248) !important;
+}
+.carousel-inner > .carousel-item > img {
+  height: 65vh;
+  min-height: 350px;
+  width: 100%;
 }
 
 /* #####################
@@ -230,7 +232,7 @@ CONTACT PAGE CSS
   border-radius: 20px;
   background-color: #00000044 !important;
   color: #ffffffda !important;
-  h6{
+  h6 {
     color: rgba(255, 255, 255, 0.699);
   }
 }
@@ -327,4 +329,17 @@ CONTACT PAGE CSS
 }
 .show-all:hover {
   color: rgb(211, 211, 211);
+}
+
+/*####################
+    VIDEO GALLARY
+ #################### */
+.playlist-vid {
+  background-color: #00000057;
+  color: white;
+}
+
+.vid-bg {
+  background-color: #4820db5e;
+  color: white;
 }

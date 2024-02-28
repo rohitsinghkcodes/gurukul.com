@@ -7,20 +7,64 @@ const Courses = () => {
   const courses = useCourse();
   return (
     <Layout title="All Courses | E-Commerce App">
-      <div className="container mt-2">
+      <div className="container mt-5">
         <h1>All Courses</h1>
-        <div className="row mt-4">
-          {courses.map((c) => (
-            <div className="col-md-4 d-flex justify-content-center" key={c._id}>
+
+        <div className="d-flex flex-wrap justify-content-evenly mt-2">
+          {courses.length > 0 ? (
+            courses?.map((product) => (
               <Link
-                to={`/course/videos/${c.slug}`}
-                className=" card category-tiles p-5 m-2"
-                style={{ minWidth: "50vh" }}
+                key={product._id}
+                to={`/course/videos/${product.slug}`}
+                className="product-link"
               >
-                {c.name}
+                <div className="card product-card mt-2" style={{ width: "19rem" }}>
+                  <div
+                    style={{
+                      borderRadius: "20px 20px 0 0",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src={`/api/v1/courses/course-image/${product._id}`}
+                      alt="course-img"
+                      style={{ width: "19rem" }}
+                    />
+                  </div>
+                  <div className="card-body ">
+                    <h6
+                      className="card-title"
+                      style={{
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 1,
+                        WebkitBoxOrient: "vertical",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {product.name}
+                    </h6>
+                    <p
+                      className="card-text"
+                      style={{
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                      }}
+                    >
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
               </Link>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h4 className="text-center text-secondary">
+              No result found for selected filters
+            </h4>
+          )}
         </div>
       </div>
     </Layout>

@@ -1,4 +1,5 @@
 import courseModel from "../models/courseModel.js";
+import videoModel from "../models/videoModel.js";
 import slugify from "slugify";
 import fs from "fs";
 
@@ -98,7 +99,7 @@ export const updateCourseController = async (req, res) => {
 export const courseController = async (req, res) => {
   try {
     const courses = await courseModel.find({}).select("-image");
-
+    
     res.status(200).send({
       success: true,
       msg: "Courses Fetched Successfully!",
@@ -155,7 +156,7 @@ export const courseImageController = async (req, res) => {
   }
 };
 
-//* DELETE Course CONTROLLER
+//! DELETE Course CONTROLLER
 export const deleteCourseController = async (req, res) => {
   try {
     const { id } = req.params;
@@ -170,5 +171,27 @@ export const deleteCourseController = async (req, res) => {
     res
       .status(500)
       .send({ success: false, msg: "Error while deleting Course!", err });
+  }
+};
+
+//! delete COURSE WITH VIDEOS CONTROLLER || DELETE
+export const courseVideosDeleteController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await videoModel.deleteMany({ course: id });
+    const deletedCourse = await courseModel
+      .findByIdAndDelete(id)
+      .select("-image");
+    res.status(200).send({
+      success: true,
+      msg: "Successfully deleted all videos in the course with course",
+      deletedCourse: deletedCourse,
+      deletedVideosCount: result.deletedCount,
+    });
+  } catch (error) {
+    console.error("Error deleting documents:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while deleting documents" });
   }
 };

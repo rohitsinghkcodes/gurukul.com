@@ -37,17 +37,17 @@ const CourseVideos = () => {
 
   return (
     <Layout>
-      <div className="container mt-4">
+      <div className=" mt-4 container">
         <h1>Course: {course}</h1>
         <div className="d-flex flex-wrap">
           {videosList.map((v) => (
-            <div className="card m-2 product-card" style={{ width: "20rem" }}>
-              <div className="d-flex justify-content-center rounded-5 p-3 pb-0">
+            <div className="card m-2 product-card" style={{ width: "19rem", overflow:"hidden" }}>
+              <div className="d-flex justify-content-center rounded-5">
                 <ReactPlayer
                   url="https://www.youtube.com/watch?v=7KDRqBpT8NA"
                   controls
                   light={true}
-                  width={"24rem"}
+                  width={"19rem"}
                   height={"10rem"}
                 />
               </div>
@@ -78,7 +78,7 @@ const CourseVideos = () => {
                   {v.description}
                 </p>
                 <div
-                  className="btn btn-outline-warning w-100 rounded-3"
+                  className="btn btn-warning w-100 rounded-3"
                   onClick={() => navigate(`update-video/${v.slug}`)}
                 >
                   Edit

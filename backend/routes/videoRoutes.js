@@ -8,6 +8,7 @@ import {
   videoCountController,
   searchVideoController,
   courseVideoController,
+  
 } from "../controllers/videoController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -47,6 +48,7 @@ router.delete(
   isAdmin,
   deleteVideoController
 );
+
 
 //~ COUNT Video
 router.get("/video-count", videoCountController);

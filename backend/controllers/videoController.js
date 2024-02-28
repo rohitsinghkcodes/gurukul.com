@@ -32,6 +32,8 @@ export const courseVideoController = async (req, res) => {
   }
 };
 
+
+
 //* CREATE NEW VIdeo CONTROLLER || POST
 export const createVideoController = async (req, res) => {
   try {

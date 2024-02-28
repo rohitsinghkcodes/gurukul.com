@@ -37,11 +37,11 @@ const Header = () => {
     <>
       <nav
         className="navbar navbar-expand-lg bg-body-tertiary "
-        data-bs-theme="light"
+        data-bs-theme="dark"
       >
         <div className="container-fluid">
           <button
-            className="navbar-toggler"
+            className="navbar-toggler mb-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo01"
@@ -52,22 +52,23 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link
-              to="/"
-              className="navbar-brand"
-              onClick={handleReload}
-              style={{
-                backgroundColor: "blueviolet",
-                padding: "8px",
-                borderRadius: "10px",
-              }}
-            >
-              PORTFOLIO
+            <Link to="/" className="navbar-brand" onClick={handleReload}>
+              <div
+                className="m-0"
+                style={{
+                  backgroundColor: "blueviolet",
+
+                  padding: "8px",
+                  borderRadius: "10px",
+                }}
+              >
+                PORTFOLIO
+              </div>
             </Link>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+            <div className="">
+              <ul className="navbar-nav  me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link to="/papers" className="nav-link" href="#">
+                  <Link to="/papers" className="nav-link">
                     Research Papers
                   </Link>
                 </li>
@@ -76,14 +77,13 @@ const Header = () => {
                     All Courses
                   </Link>
                 </li>
-                {/* CATEGORIES DROPDOWN STARTS HERE */}
               </ul>
             </div>
             <div className="searchBox">
               <SearchComponent />
             </div>
 
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav  mb-2 mb-lg-0">
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -114,12 +114,6 @@ const Header = () => {
                             <FaRegUserCircle /> &nbsp; My Profile
                           </Link>
 
-                          <Link to="/orders" className="dropdown-item ">
-                            <FaBoxOpen /> &nbsp; My Orders
-                          </Link>
-                          <Link to="/contact" className="dropdown-item ">
-                            <TfiHeadphoneAlt /> &nbsp; 24x7 Helpline
-                          </Link>
                           <Link
                             to="/login"
                             onClick={handleLogOut}

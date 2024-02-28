@@ -113,14 +113,15 @@ const CreateCategory = () => {
       toast.error("Something went wrong while editing course!!");
     }
   };
-  //delete category
+
+  //! DELETE COURSE
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `/api/v1/courses/delete-course/${id}`
+        `/api/v1/courses/delete-complete-course/${id}`
       );
       if (data?.success) {
-        toast.success(`${data.msg}`);
+        toast.success(`Course Deleted Successfully.`);
         getAllCategories();
       } else {
         toast.error(`${data.msg}`);
@@ -139,7 +140,7 @@ const CreateCategory = () => {
           </div>
           <div className="col-md-9">
             <div className="card card-dash p-2 rounded-5  ">
-              <div className="d-grid text-center align-items-center w-100 m-0">
+              <div className="d-grid  align-items-center w-100 m-0">
                 <h3>Manage Courses</h3>
                 <div className="my-3 ">
                   <CategoryForm

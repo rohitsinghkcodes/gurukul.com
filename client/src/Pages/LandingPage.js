@@ -11,9 +11,9 @@ const HomePage = () => {
   return (
     <Layout title={"Portfolio"}>
       <>
-        {/* Crousel */}
         <div>
           <div className="container pt-4">
+            {/* Crousel start */}
             <div
               id="carouselExampleAutoplaying"
               className="carousel slide"
@@ -70,6 +70,11 @@ const HomePage = () => {
                 <span className="visually-hidden">Next</span>
               </button>
             </div>
+            {/* Crousel end
+            
+            
+            */}
+
             <div className="d-flex justify-content-between align-items-center">
               <h1 className="ms-3 mt-5">Courses</h1>
               <Link to={`/all-courses`} className="me-5 mt-5 pt-4  show-all">
@@ -85,7 +90,7 @@ const HomePage = () => {
                     className="product-link"
                   >
                     <div
-                      className="card product-card"
+                      className="card product-card mt-2"
                       style={{ width: "19rem" }}
                     >
                       <div
@@ -97,7 +102,7 @@ const HomePage = () => {
                         <img
                           src={`/api/v1/courses/course-image/${product._id}`}
                           alt="course-img"
-                          style={{width:"19rem"}}
+                          style={{ width: "19rem" }}
                         />
                       </div>
                       <div className="card-body ">
@@ -137,7 +142,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        {/* crousel end */}
       </>
     </Layout>
   );
