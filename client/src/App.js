@@ -14,7 +14,7 @@ import CreateVideo from "./Pages/Admin/AddVideosToCourse.js";
 import Profile from "./Pages/User/Profile.js";
 import Products from "./Pages/Admin/AllCoursesVideos.js";
 import Search from "./Pages/Search.js";
-import ProductDetails from "./Pages/ProductDetails__.js";
+import ResearchPaperViewer from "./Pages/ResearchPaperViewer.js";
 import Courses from "./Pages/Courses.js";
 import CategoryProduct from "./Pages/CoursesPlaylist__.js";
 import LandingPage from "./Pages/LandingPage.js";
@@ -31,7 +31,7 @@ function App() {
         <Route path="/papers" element={<ResearchPapers />} />
         <Route path="/course/videos/:slug" element={<VideoGallery />} />
         {/* <Route path="/home" element={<HomePage />} /> */}
-        <Route path="/product/:slug" element={<ProductDetails />} />
+        <Route path="/research-paper-viewer/:slug" element={<ResearchPaperViewer />} />
         <Route path="/search" element={<Search />} />
         <Route path="/register" element={<Register />} />
         <Route path="/all-courses" element={<Courses />} />

@@ -36,7 +36,7 @@ router.put(
 router.get("/get-all-papers", paperController);
 
 //~ GET SINGLE paper
-router.get("/get-single-paper/:id", getSinglePaperController);
+router.get("/get-single-paper/:slug", getSinglePaperController);
 
 //~ GET PRODUCT IMAGE
 router.get("/paper-pdf/:id", paperpdfController);

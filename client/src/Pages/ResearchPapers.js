@@ -36,6 +36,7 @@ const ResearchPapers = () => {
               >
                 <div className="row g-0">
                   <div className="col-md-2 py-4">
+                    {/* TODO: ADD PDF VIEWER HERE INSTED OF IMG */}
                     <img
                       src="https://media.licdn.com/dms/image/D4D12AQHl1HFTvItqpw/article-cover_image-shrink_720_1280/0/1690440690219?e=2147483647&v=beta&t=fN3x7AxsHbO9VNmQS3rXS3QVymAzr5vDoTjmUMHea1w"
                       className="img-fluid rounded-4"

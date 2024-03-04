@@ -116,7 +116,7 @@ export const paperController = async (req, res) => {
 //* GET SINGLE paper CONTROLLER
 export const getSinglePaperController = async (req, res) => {
   try {
-    const paper = await paperModel.findById(req.params.id);
+    const paper = await paperModel.findOne({ slug: req.params.slug });
     if (paper) {
       res.status(200).send({
         success: true,
