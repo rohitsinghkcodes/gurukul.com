@@ -31,6 +31,7 @@ export const addPaperController = async (req, res) => {
     const paper = await new paperModel({
       ...req.fields,
       slug: slugify(name),
+      updatedAt: new Date(),
     });
     if (pdf) {
       paper.pdf.data = fs.readFileSync(pdf.path);
@@ -71,7 +72,7 @@ export const updatePaperController = async (req, res) => {
     const { id } = req.params;
     const paper = await paperModel.findByIdAndUpdate(
       id,
-      { ...req.fields, slug: slugify(name) },
+      { ...req.fields, slug: slugify(name), updatedAt: new Date() },
       { new: true }
     );
 
@@ -115,10 +116,7 @@ export const paperController = async (req, res) => {
 //* GET SINGLE paper CONTROLLER
 export const getSinglePaperController = async (req, res) => {
   try {
-    const paper = await paperModel
-      .findOne({ slug: req.params.slug })
-      ;
-
+    const paper = await paperModel.findById(req.params.id);
     if (paper) {
       res.status(200).send({
         success: true,
