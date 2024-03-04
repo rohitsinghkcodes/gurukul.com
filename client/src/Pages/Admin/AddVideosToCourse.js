@@ -15,6 +15,7 @@ const AddVideosToCourse = () => {
   const [link, setLink] = useState("");
   const [course, setCourse] = useState("");
 
+
   //* GET ALL Courses
   const getAllCourses = async () => {
     try {
@@ -32,7 +33,7 @@ const AddVideosToCourse = () => {
     getAllCourses();
   }, []);
 
-  //*handle Create Product Button
+  //*handle add video Button
   const handleAddVideoBtn = async (e) => {
     e.preventDefault();
 

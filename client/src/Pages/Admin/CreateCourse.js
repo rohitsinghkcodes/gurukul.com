@@ -20,6 +20,7 @@ const CreateCategory = () => {
   const [image, setImage] = useState("");
   const [updatedImage, setUpdatedImage] = useState("");
   const [id, setId] = useState("");
+  
 
   //handle form
   const handleSubmit = async (e) => {

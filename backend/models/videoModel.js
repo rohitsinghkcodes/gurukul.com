@@ -19,6 +19,7 @@ const videoSchema = new mongoose.Schema(
       ref: "course",
       required: true,
     },
+
     slug: {
       type: String,
       lowercase: true,
