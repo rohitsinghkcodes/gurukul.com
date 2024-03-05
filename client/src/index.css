@@ -241,7 +241,7 @@ CONTACT PAGE CSS
 }
 
 .card h1 {
-  color: blueviolet;
+  color: #8a2be2;
 }
 
 .product-img {
@@ -342,4 +342,15 @@ CONTACT PAGE CSS
 .vid-bg {
   background-color: #4820db5e;
   color: white;
+}
+
+/*####################
+    ResearchPaperViewer
+ #################### */
+viewer-title {
+  font-size: 45px !important;
+}
+viewer-desc {
+  font-size: 18px !important;
+  color: #ffffff9a;
 }
