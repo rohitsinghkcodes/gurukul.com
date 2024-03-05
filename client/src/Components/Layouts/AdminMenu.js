@@ -11,7 +11,13 @@ const AdminMenu = () => {
             to="/dashboard/admin/create-category"
             className="list-group-item list-group-item-action"
           >
-            Manage Course
+            Manage Courses
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/manage-papers"
+            className="list-group-item list-group-item-action"
+          >
+            Manage Papers
           </NavLink>
           <NavLink
             to="/dashboard/admin/create-product"
@@ -25,7 +31,6 @@ const AdminMenu = () => {
           >
             Courses and Videos
           </NavLink>
-          
         </div>
       </div>
     </>

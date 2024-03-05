@@ -5,8 +5,8 @@ import paperModel from "../models/paperModel.js";
 //* ADD NEW RESEARCH PAPER CONTROLLER || POST
 export const addPaperController = async (req, res) => {
   try {
-    const { name, description } = req.fields;
-    const { pdf } = req.files;
+    const { name, description, pdfLink } = req.fields;
+    // const { pdf } = req.files;
 
     // Validation
     switch (true) {
@@ -14,10 +14,8 @@ export const addPaperController = async (req, res) => {
         return res.status(500).send({ error: "name is required!" });
       case !description:
         return res.status(500).send({ error: "description is required!" });
-      case pdf && pdf.size > 10000000:
-        return res
-          .status(500)
-          .send({ error: "pdf is required and should be less than 10MB!" });
+      case !pdfLink:
+        return res.status(500).send({ error: "pdf link is required " });
     }
 
     const existingPaper = await paperModel.findOne({ name });
@@ -32,12 +30,12 @@ export const addPaperController = async (req, res) => {
       ...req.fields,
       slug: slugify(name),
       updatedAt: new Date(),
-    });
-    if (pdf) {
-      paper.pdf.data = fs.readFileSync(pdf.path);
-      paper.pdf.contentType = pdf.type;
-    }
-    await paper.save();
+    }).save();
+    // if (pdf) {
+    //   paper.pdf.data = fs.readFileSync(pdf.path);
+    //   paper.pdf.contentType = pdf.type;
+    // }
+    // await paper.save();
 
     res.status(201).send({
       success: true,
@@ -55,18 +53,16 @@ export const addPaperController = async (req, res) => {
 //* UPDATE paper CONTROLLER
 export const updatePaperController = async (req, res) => {
   try {
-    const { name, description } = req.fields;
-    const { pdf } = req.files;
+    const { name, description, pdfLink } = req.fields;
+    // const { pdf } = req.files;
     // Validation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "name is required!" });
       case !description:
         return res.status(500).send({ error: "description is required!" });
-      case pdf && pdf.size > 10000000:
-        return res
-          .status(500)
-          .send({ error: "pdf is required and should be less than 10MB!" });
+      case pdfLink:
+        return res.status(500).send({ error: "pdf link is required " });
     }
 
     const { id } = req.params;
@@ -75,11 +71,6 @@ export const updatePaperController = async (req, res) => {
       { ...req.fields, slug: slugify(name), updatedAt: new Date() },
       { new: true }
     );
-
-    if (pdf) {
-      paper.pdf.data = fs.readFileSync(pdf.path);
-      paper.pdf.contentType = pdf.type;
-    }
     await paper.save();
 
     res.status(201).send({
@@ -98,7 +89,7 @@ export const updatePaperController = async (req, res) => {
 //* GET ALL papers CONTROLLER
 export const paperController = async (req, res) => {
   try {
-    const papers = await paperModel.find({}).select("-pdf");
+    const papers = await paperModel.find({});
 
     res.status(200).send({
       success: true,
@@ -134,28 +125,28 @@ export const getSinglePaperController = async (req, res) => {
   }
 };
 
-//* paper pdf CONTROLLER || GET
-export const paperpdfController = async (req, res) => {
-  try {
-    const paper = await paperModel.findById(req.params.id).select("pdf");
+// //* paper pdf CONTROLLER || GET
+// export const paperpdfController = async (req, res) => {
+//   try {
+//     const paper = await paperModel.findById(req.params.id).select("pdf");
 
-    if (paper.pdf.data) {
-      res.set("Contect-type", paper.pdf.contentType);
-      return res.status(200).send(paper.pdf.data);
-    }
-  } catch (err) {
-    console.log(err);
-    res
-      .status(500)
-      .send({ success: false, msg: "Error While Fetching paper pdf!", err });
-  }
-};
+//     if (paper.pdf.data) {
+//       res.set("Contect-type", paper.pdf.contentType);
+//       return res.status(200).send(paper.pdf.data);
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res
+//       .status(500)
+//       .send({ success: false, msg: "Error While Fetching paper pdf!", err });
+//   }
+// };
 
 //! DELETE paper CONTROLLER
 export const deletePaperController = async (req, res) => {
   try {
     const { id } = req.params;
-    const paper = await paperModel.findByIdAndDelete(id).select("-pdf");
+    const paper = await paperModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
       msg: "paper Deleted Successfully!",

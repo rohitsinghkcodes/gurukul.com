@@ -10,9 +10,13 @@ const papersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  pdf: {
-    data: Buffer,
-    contentType: String,
+  // pdf: {
+  //   data: Buffer,
+  //   contentType: String,
+  // },
+  pdfLink: {
+    type: String,
+    required: true,
   },
   updatedAt: {
     type: Date,

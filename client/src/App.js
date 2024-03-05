@@ -22,6 +22,8 @@ import ResearchPapers from "./Pages/ResearchPapers.js";
 import VideoGallery from "./Pages/VideoGallery.js";
 import CourseVideos from "./Pages/Admin/CourseVideos.js";
 import UpdateVideoDetails from "./Pages/Admin/UpdateVideoDetails.js";
+import ManagePapers from "./Pages/Admin/ManagePapers.js";
+import UpdatePaperDetails from "./Pages/Admin/UpdatePaperDetails.js";
 
 function App() {
   return (
@@ -31,7 +33,10 @@ function App() {
         <Route path="/papers" element={<ResearchPapers />} />
         <Route path="/course/videos/:slug" element={<VideoGallery />} />
         {/* <Route path="/home" element={<HomePage />} /> */}
-        <Route path="/research-paper-viewer/:slug" element={<ResearchPaperViewer />} />
+        <Route
+          path="/research-paper-viewer/:slug"
+          element={<ResearchPaperViewer />}
+        />
         <Route path="/search" element={<Search />} />
         <Route path="/register" element={<Register />} />
         <Route path="/all-courses" element={<Courses />} />
@@ -45,6 +50,10 @@ function App() {
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCourse />} />
+          <Route path="admin/manage-papers" element={<ManagePapers />}/ >
+            
+          <Route path="admin/manage-papers/update-papers/:slug" element={<UpdatePaperDetails />} />
+         
           <Route path="admin/create-product" element={<CreateVideo />} />
           <Route path="admin/products/:slug" element={<CourseVideos />} />
           <Route

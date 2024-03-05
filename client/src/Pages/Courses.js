@@ -6,7 +6,7 @@ import useCourse from "../hooks/useCourse.js";
 const Courses = () => {
   const courses = useCourse();
   return (
-    <Layout title="All Courses | E-Commerce App">
+    <Layout title="All Courses | Portfolio App">
       <div className="container mt-5">
         <h1>All Courses</h1>
 

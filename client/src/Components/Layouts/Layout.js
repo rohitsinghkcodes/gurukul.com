@@ -16,7 +16,6 @@ const Layout = (props) => {
       <Header />
 
       <main className="main-style" style={{ minHeight: "100vh" }}>
-        
         {props.children}
       </main>
 
@@ -26,7 +25,7 @@ const Layout = (props) => {
 };
 
 Layout.defaultProps = {
-  title: "E-Commerce App",
+  title: "Portfolio",
   description: "Mern Stack E-Commerce Web App",
   keywords: "mongodb, express, ract, node, webapp, mern, ecommerce, shopping",
   author: "rohit_kumar_singh",

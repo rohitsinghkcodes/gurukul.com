@@ -347,10 +347,33 @@ CONTACT PAGE CSS
 /*####################
     ResearchPaperViewer
  #################### */
+
+ .rp-card {
+  border-radius: 20px;
+  background-color: #00000044 !important;
+  color: #ffffffda !important;
+  h6 {
+    color: rgba(255, 255, 255, 0.699);
+  }
+}
 viewer-title {
   font-size: 45px !important;
 }
 viewer-desc {
   font-size: 18px !important;
   color: #ffffff9a;
+}
+
+/* PHONE SIZE */
+/* PDF  PREVIEW */
+@media (max-width: 768px) {
+  iframe {
+    height: 300px; /* Adjust as needed */
+  }
+}
+
+@media (max-width: 576px) {
+  iframe {
+    height: 200px; /* Adjust as needed */
+  }
 }

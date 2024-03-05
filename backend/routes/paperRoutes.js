@@ -5,7 +5,6 @@ import {
   paperController,
   getSinglePaperController,
   deletePaperController,
-  paperpdfController,
 } from "../controllers/paperController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -38,8 +37,8 @@ router.get("/get-all-papers", paperController);
 //~ GET SINGLE paper
 router.get("/get-single-paper/:slug", getSinglePaperController);
 
-//~ GET PRODUCT IMAGE
-router.get("/paper-pdf/:id", paperpdfController);
+// //~ GET PRODUCT IMAGE
+// router.get("/paper-pdf/:id", paperpdfController);
 
 //! DELETE paper
 router.delete(

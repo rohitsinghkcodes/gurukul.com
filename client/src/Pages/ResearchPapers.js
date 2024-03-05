@@ -37,7 +37,7 @@ const ResearchPapers = () => {
                 className="product-link"
               >
                 <div
-                  className="card mb-3 rounded-4 px-4"
+                  className="card mb-3 rp-card rounded-4 px-4"
                   style={{ minWidth: "100vh" }}
                 >
                   <div className="row g-0">
@@ -49,14 +49,23 @@ const ResearchPapers = () => {
                         alt="..."
                       />
                     </div>
-                    <div className="col-md-9 py-3">
+                    <div className="col-md-10 ">
                       <div className="card-body">
                         <h5 className="card-title">{rp.name}</h5>
-                        <p className="card-text">{rp.description}</p>
-                        <p className="card-text">
-                          <small className="text-body-secondary">
-                            Last updated {moment(rp.updatedAt).fromNow()}
-                          </small>
+                        <p
+                          className="card-text"
+                          style={{
+                            color: "#ffffffb5",
+                            overflow: "hidden",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
+                          }}
+                        >
+                          {rp.description}
+                        </p>
+                        <p className="text-secondary">
+                          Last updated {moment(rp.updatedAt).fromNow()}
                         </p>
                       </div>
                     </div>
