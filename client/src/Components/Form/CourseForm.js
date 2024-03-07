@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryForm = ({
+const CourseForm = ({
   edit,
   handleSubmit,
   name,
@@ -108,4 +108,4 @@ const CategoryForm = ({
   );
 };
 
-export default CategoryForm;
+export default CourseForm;

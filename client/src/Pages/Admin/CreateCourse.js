@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import CategoryForm from "../../Components/Form/CourseForm";
+import CourseForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
 import Spinner from "../../Components/Spinner.js";
@@ -20,7 +20,6 @@ const CreateCategory = () => {
   const [image, setImage] = useState("");
   const [updatedImage, setUpdatedImage] = useState("");
   const [id, setId] = useState("");
-  
 
   //handle form
   const handleSubmit = async (e) => {
@@ -144,7 +143,7 @@ const CreateCategory = () => {
               <div className="d-grid  align-items-center w-100 m-0">
                 <h3>Manage Courses</h3>
                 <div className="my-3 ">
-                  <CategoryForm
+                  <CourseForm
                     handleSubmit={handleSubmit}
                     name={name}
                     setName={setName}
@@ -230,7 +229,7 @@ const CreateCategory = () => {
             open={visible}
             width={900}
           >
-            <CategoryForm
+            <CourseForm
               edit={true}
               name={updatedName}
               setName={setUpdatedName}

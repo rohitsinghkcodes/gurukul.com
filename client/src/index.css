@@ -348,7 +348,7 @@ CONTACT PAGE CSS
     ResearchPaperViewer
  #################### */
 
- .rp-card {
+.rp-card {
   border-radius: 20px;
   background-color: #00000044 !important;
   color: #ffffffda !important;
@@ -376,4 +376,14 @@ viewer-desc {
   iframe {
     height: 200px; /* Adjust as needed */
   }
+}
+
+/* NOTES CSS */
+.notes-btn {
+  background-color: rgb(79, 8, 180);
+  color: white;
+}
+.notes-btn:hover {
+  background-color: rgb(106, 0, 206);
+  color: whitesmoke;
 }

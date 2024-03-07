@@ -8,7 +8,7 @@ const AdminMenu = () => {
         <div className="list-group">
           <h4>Admin Panel</h4>
           <NavLink
-            to="/dashboard/admin/create-category"
+            to="/dashboard/admin/create-course"
             className="list-group-item list-group-item-action"
           >
             Manage Courses
@@ -20,13 +20,19 @@ const AdminMenu = () => {
             Manage Papers
           </NavLink>
           <NavLink
-            to="/dashboard/admin/create-product"
+            to="/dashboard/admin/manage-notes"
+            className="list-group-item list-group-item-action"
+          >
+            Manage Notes
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/add-videos"
             className="list-group-item list-group-item-action"
           >
             Add Videos to Course
           </NavLink>
           <NavLink
-            to="/dashboard/admin/products"
+            to="/dashboard/admin/course-videos"
             className="list-group-item list-group-item-action"
           >
             Courses and Videos
