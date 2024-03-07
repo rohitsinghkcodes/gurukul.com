@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
 
@@ -157,10 +157,11 @@ const ManageNotes = () => {
             <h3 className="ms-4 mt-5">All Notes</h3>
             <div className="d-flex flex-wrap">
               {allSubNotes.length > 0 ? (
-                allSubNotes?.map((rp) => (
+                allSubNotes?.map((n) => (
                   <div
                     className="card rp-card mt-3 mx-2"
                     style={{ width: "32rem" }}
+                    key={n._id}
                   >
                     <div
                       style={{
@@ -169,7 +170,7 @@ const ManageNotes = () => {
                       }}
                     >
                       <img
-                        src={`/api/v1/notes/sub-image/${rp._id}`}
+                        src={`/api/v1/notes/sub-image/${n._id}`}
                         alt="sunject-notes-img"
                         style={{
                           width: "32rem",
@@ -191,25 +192,25 @@ const ManageNotes = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        {rp.name}
+                        {n.name}
                       </h6>
                       <p
                         style={{
                           color: "#ffffffd3",
                           overflow: "hidden",
                           display: "-webkit-box",
-                          WebkitLineClamp: 3,
+                          WebkitLineClamp: 2,
                           WebkitBoxOrient: "vertical",
                         }}
                       >
-                        {rp.description}
+                        {n.description}
                       </p>
                       <p className="card-text text-secondary">
-                        Last updated {moment(rp.updatedAt).fromNow()}
+                        Last updated {moment(n.updatedAt).fromNow()}
                       </p>
                       <div
                         className="btn btn-sm notes-btn w-100 rounded-3 "
-                        onClick={() => navigate(`update-notes/${rp.slug}`)}
+                        onClick={() => navigate(`update-notes/${n.slug}`)}
                       >
                         Edit
                       </div>

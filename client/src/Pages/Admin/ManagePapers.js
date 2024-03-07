@@ -126,7 +126,11 @@ const ManagePapers = () => {
             <div className="d-flex flex-wrap justify-content-evenly mt-2">
               {researchPapers.length > 0 ? (
                 researchPapers?.map((rp) => (
-                  <div className="card rp-card mt-2" style={{ width: "32rem" }}>
+                  <div
+                    className="card rp-card mt-2"
+                    style={{ width: "32rem" }}
+                    key={rp._id}
+                  >
                     <div
                       style={{
                         borderRadius: "20px 20px 0 0",
@@ -163,9 +167,7 @@ const ManagePapers = () => {
                       </p>
                       <div
                         className="btn btn-sm btn-secondary w-100 rounded-3 "
-                        onClick={() =>
-                          navigate(`update-papers/${rp.slug}`)
-                        }
+                        onClick={() => navigate(`update-papers/${rp.slug}`)}
                       >
                         Edit
                       </div>

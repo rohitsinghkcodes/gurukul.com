@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair:opsz,wght@5..1200,700&family=Poppins:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hanalei&display=swap");
 
 /* font-family: 'Playfair', serif;
 font-family: 'Poppins', sans-serif; */
@@ -87,23 +88,22 @@ PAGE NOT FOUND CSS
 .pnf {
   display: flex;
   min-height: 78vh;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 .pnf-title {
-  font-size: 100px;
+  color: rgb(252, 248, 255);
+  font-family: "Hanalei", system-ui;
+  font-size: 20vh;
   font-weight: 700;
+  letter-spacing: 10px;
 }
 
 .pnf-heading {
   font-weight: normal;
-}
-
-.pnf-emoji {
-  font-size: 70px;
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
 .pnf-btn {
@@ -111,7 +111,6 @@ PAGE NOT FOUND CSS
   border: 1px solid #cacaca;
   text-decoration: none;
   padding: 8px;
-  margin-top: 20px;
   border-radius: 10px;
 }
 

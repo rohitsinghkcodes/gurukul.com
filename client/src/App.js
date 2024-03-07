@@ -16,6 +16,7 @@ import CoursesVideos from "./Pages/Admin/AllCoursesVideos.js";
 import Search from "./Pages/Search.js";
 import ResearchPaperViewer from "./Pages/ResearchPaperViewer.js";
 import Courses from "./Pages/Courses.js";
+import Notes from "./Pages/Notes.js";
 import CategoryProduct from "./Pages/CoursesPlaylist__.js";
 import LandingPage from "./Pages/LandingPage.js";
 import ResearchPapers from "./Pages/ResearchPapers.js";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/register" element={<Register />} />
         <Route path="/all-courses" element={<Courses />} />
+        <Route path="/all-notes" element={<Notes />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         {/* USER ROUTES */}
         <Route path="/" element={<PrivateRoute />}>

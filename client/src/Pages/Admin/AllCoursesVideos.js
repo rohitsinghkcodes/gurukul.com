@@ -46,7 +46,7 @@ const Products = () => {
                     key={c._id}
                   >
                     <Link
-                      to={`/dashboard/admin/products/${c.slug}`}
+                      to={`/dashboard/admin/courses/${c.slug}`}
                       className=" card category-tiles p-4 m-2"
                       style={{ minWidth: "40vh" }}
                     >
