@@ -8,6 +8,7 @@ import cors from "cors";
 import courseRoutes from "./routes/courseRoutes.js";
 import videoRoutes from "./routes/videoRoutes.js";
 import paperRoutes from "./routes/paperRoutes.js";
+import notesRoutes from "./routes/notesRoutes.js";
 
 //configure env
 dotenv.config();
@@ -28,6 +29,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/courses", courseRoutes);
 app.use("/api/v1/videos", videoRoutes);
 app.use("/api/v1/papers", paperRoutes);
+app.use("/api/v1/notes", notesRoutes);
 
 // Create REST api
 app.get("/", (req, res) => {
