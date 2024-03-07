@@ -25,6 +25,7 @@ import UpdateVideoDetails from "./Pages/Admin/UpdateVideoDetails.js";
 import ManagePapers from "./Pages/Admin/ManagePapers.js";
 import ManageNotes from "./Pages/Admin/ManageNotes.js";
 import UpdatePaperDetails from "./Pages/Admin/UpdatePaperDetails.js";
+import UpdateNotes from "./Pages/Admin/UpdateNotes.js";
 
 function App() {
   return (
@@ -57,6 +58,10 @@ function App() {
           <Route
             path="admin/manage-papers/update-papers/:slug"
             element={<UpdatePaperDetails />}
+          />
+          <Route
+            path="admin/manage-notes/update-notes/:slug"
+            element={<UpdateNotes />}
           />
           <Route path="admin/add-videos" element={<CreateVideo />} />
           <Route path="admin/courses/:slug" element={<CourseVideos />} />

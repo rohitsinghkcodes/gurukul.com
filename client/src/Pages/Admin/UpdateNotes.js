@@ -2,36 +2,41 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import moment from "moment";
 
-const ManageNotes = () => {
+const UpdateNotes = () => {
+  const params = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
-  const [allSubNotes, setAllSubNotes] = useState([]);
   const [image, setImage] = useState("");
+  const [id, setId] = useState("");
 
-  const getAllNotes = async () => {
+  const getSingleNotes = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/notes/get-all-notes`);
+      const { data } = await axios.get(
+        `/api/v1/notes/get-single-sub-notes/${params.slug}`
+      );
       if (data?.success) {
-        setAllSubNotes(data.all_sub_notes);
+        setName(data.notes.name);
+        setDescription(data.notes.description);
+        setLink(data.notes.pdfLink);
+        setId(data.notes._id);
       }
     } catch (error) {
-      toast.error("Something went wrong while fethcing research papers!");
+      toast.error("Something went wrong while fetching notes!");
     }
   };
 
   useEffect(() => {
-    getAllNotes();
+    getSingleNotes();
     //eslint-disable-next-line
   }, []);
 
-  //*handle add notes Button
-  const handleAddNotesBtn = async (e) => {
+  //? handle update notes details Button
+  const handleUpdateNotesBtn = async (e) => {
     e.preventDefault();
 
     // Validate if all fields are filled
@@ -59,20 +64,42 @@ const ManageNotes = () => {
       notesData.append("pdfLink", link);
       notesData.append("image", image);
 
-      const { data } = await axios.post("/api/v1/notes/add-notes", notesData);
+      const { data } = await axios.put(
+        `/api/v1/notes/update-notes/${id}`,
+        notesData
+      );
       if (data?.success) {
         toast.success(`${data?.msg}`);
-        getAllNotes();
-        setName("");
-        setDescription("");
-        setLink("");
-        setImage("");
+        navigate("/dashboard/admin/manage-notes");
       } else {
         toast.error(`${data?.msg}`);
       }
     } catch (err) {
       console.log(err);
-      toast.error("Something Went Wrong In Adding new notes!");
+      toast.error("Something went wrong while updating notes!");
+    }
+  };
+
+  //! handle Delete Product Button
+  const handleDeleteNotesBtn = async (e) => {
+    e.preventDefault();
+    try {
+      const confirm = window.prompt(
+        'Type "yes" if you sure, you want to delete this?'
+      );
+      if (!confirm) return;
+      const { data } = await axios.delete(
+        `/api/v1/notes/delete-sub-notes/${id}`
+      );
+      if (data?.success) {
+        toast.success(`${data?.msg}`);
+        navigate("/dashboard/admin/manage-notes");
+      } else {
+        toast.error(`${data?.msg}`);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something while deleting notes!");
     }
   };
 
@@ -85,7 +112,7 @@ const ManageNotes = () => {
           </div>
           <div className="col-md-9">
             <div className="card card-dash p-5 rounded-5">
-              <h3>Manage Notes📝</h3>
+              <h3>Update Notes Details📝</h3>
               <div className="m-1 mt-2 ">
                 <div className="mb-4">
                   <label className="form-label ">Title</label>
@@ -131,12 +158,22 @@ const ManageNotes = () => {
                     />
                   </label>
                 </div>
+
                 <div className="mb-4">
-                  {image && (
+                  {image ? (
                     <div className="text-center">
                       <img
                         src={URL.createObjectURL(image)}
                         alt="notes-subject-image"
+                        height="200px"
+                        className="img img-responsiv rounded"
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <img
+                        src={`/api/v1/notes/sub-image/${id}`}
+                        alt="image"
                         height="200px"
                         className="img img-responsiv rounded"
                       />
@@ -147,80 +184,18 @@ const ManageNotes = () => {
                 <div className="mb-4">
                   <button
                     className="btn notes-btn "
-                    onClick={handleAddNotesBtn}
+                    onClick={handleUpdateNotesBtn}
                   >
-                    Add new notes
+                    Update notes
+                  </button>
+                  <button
+                    className="btn btn-danger ms-2"
+                    onClick={handleDeleteNotesBtn}
+                  >
+                    Delete notes
                   </button>
                 </div>
               </div>
-            </div>
-            <h3 className="ms-4 mt-5">All Notes</h3>
-            <div className="d-flex flex-wrap">
-              {allSubNotes.length > 0 ? (
-                allSubNotes?.map((rp) => (
-                  <div
-                    className="card rp-card mt-3 mx-2"
-                    style={{ width: "32rem" }}
-                  >
-                    <div
-                      style={{
-                        borderRadius: "20px 20px 0 0",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <img
-                        src={`/api/v1/notes/sub-image/${rp._id}`}
-                        alt="sunject-notes-img"
-                        style={{
-                          width: "32rem",
-                          height: "14rem",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-
-                    <div className="card-body ">
-                      <h6
-                        style={{
-                          color: "white",
-                          overflow: "hidden",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 1,
-                          WebkitBoxOrient: "vertical",
-                          fontSize: "18px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {rp.name}
-                      </h6>
-                      <p
-                        style={{
-                          color: "#ffffffd3",
-                          overflow: "hidden",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                        }}
-                      >
-                        {rp.description}
-                      </p>
-                      <p className="card-text text-secondary">
-                        Last updated {moment(rp.updatedAt).fromNow()}
-                      </p>
-                      <div
-                        className="btn btn-sm notes-btn w-100 rounded-3 "
-                        onClick={() => navigate(`update-notes/${rp.slug}`)}
-                      >
-                        Edit
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <h4 className="text-center text-secondary">
-                  No result found for selected filters
-                </h4>
-              )}
             </div>
           </div>
         </div>
@@ -229,4 +204,4 @@ const ManageNotes = () => {
   );
 };
 
-export default ManageNotes;
+export default UpdateNotes;

@@ -14,7 +14,7 @@ import formidable from "express-formidable";
 const router = express.Router();
 
 //^ ######## ROUTES ########
-//~ CREATE CATEGORY
+//~ CREATE notes
 router.post(
   "/add-notes",
   requireSignIn,
@@ -23,7 +23,7 @@ router.post(
   addNotesController
 );
 
-//~ UPDATE COURSE
+//~ UPDATE notes
 router.put(
   "/update-notes/:id",
   requireSignIn,
@@ -32,16 +32,16 @@ router.put(
   updateNotesController
 );
 
-//~ GET ALL CATEGORIES
+//~ GET ALL notes
 router.get("/get-all-notes", fetchAllNotesController);
 
-//~ GET SINGLE COURSE
+//~ GET SINGLE notes
 router.get("/get-single-sub-notes/:slug", getSingleSubNoteController);
 
-//~ GET PRODUCT IMAGE
+//~ GET notes IMAGE
 router.get("/sub-image/:id", subImageController);
 
-//! DELETE COURSE
+//! DELETE notes
 router.delete(
   "/delete-sub-notes/:id",
   requireSignIn,

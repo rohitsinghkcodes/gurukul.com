@@ -1,4 +1,4 @@
-import { Select } from "antd";
+
 import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
@@ -6,8 +6,6 @@ import axios from "axios";
 import CourseForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
-import Spinner from "../../Components/Spinner.js";
-const { Option } = Select;
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);

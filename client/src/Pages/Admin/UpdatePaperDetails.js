@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import { Select } from "antd";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import moment from "moment";
-const { Option } = Select;
 
 const UpdatePaperDetails = () => {
   const params = useParams();
@@ -78,12 +75,12 @@ const UpdatePaperDetails = () => {
     }
   };
 
-  //*handle Delete Product Button
+  //! handle Delete Product Button
   const handleDeleteBtn = async (e) => {
     e.preventDefault();
     try {
       const confirm = window.prompt(
-        'Type "yes" if you sure, you want to delete this product?'
+        'Type "yes" if you sure, you want to delete this?'
       );
       if (!confirm) return;
       const { data } = await axios.delete(`/api/v1/papers/delete-paper/${id}`);
