@@ -1,7 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import About from "./Pages/About.js";
-import Contact from "./Pages/Contact.js";
-import Policy from "./Pages/Policy.js";
 import PagenotFound from "./Pages/PagenotFound.js";
 import Register from "./Pages/Auth/Register.js";
 import Login from "./Pages/Auth/Login.js";
@@ -75,8 +73,6 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/policy" element={<Policy />} />
         <Route path="/*" element={<PagenotFound />} />
       </Routes>
     </>

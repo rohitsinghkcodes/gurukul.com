@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { Popconfirm } from "antd";
 
 const ManageNotes = () => {
   const navigate = useNavigate();
@@ -73,6 +74,24 @@ const ManageNotes = () => {
     } catch (err) {
       console.log(err);
       toast.error("Something Went Wrong In Adding new notes!");
+    }
+  };
+
+  //! handle Delete Product Button
+  const handleDeleteNotesBtn = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `/api/v1/notes/delete-sub-notes/${id}`
+      );
+      if (data?.success) {
+        toast.success(`${data?.msg}`);
+        getAllNotes();
+      } else {
+        toast.error(`${data?.msg}`);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something while deleting notes!");
     }
   };
 
@@ -208,11 +227,24 @@ const ManageNotes = () => {
                       <p className="card-text text-secondary">
                         Last updated {moment(n.updatedAt).fromNow()}
                       </p>
-                      <div
-                        className="btn btn-sm notes-btn w-100 rounded-3 "
-                        onClick={() => navigate(`update-notes/${n.slug}`)}
-                      >
-                        Edit
+
+                      <div className="d-flex justify-content-end">
+                        <div
+                          className="btn btn-sm notes-btn w-50 rounded-3 "
+                          onClick={() => navigate(`update-notes/${n.slug}`)}
+                        >
+                          Edit
+                        </div>
+                        <Popconfirm
+                          title="Are you sure, you want to delete ?"
+                          onConfirm={() => handleDeleteNotesBtn(n._id)}
+                          okText="Yes"
+                          cancelText="No"
+                        >
+                          <div className="btn btn-sm btn-danger w-50 rounded-3 ms-2">
+                            Delete
+                          </div>
+                        </Popconfirm>
                       </div>
                     </div>
                   </div>

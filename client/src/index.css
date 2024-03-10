@@ -16,8 +16,8 @@ BODY CSS
 body {
   /* background-image: linear-gradient(0deg, #4a9fff 20px, #a0a0a0 100%); */
   font-family: "Poppins", sans-serif;
-  background-color: #0b0e1aec;
-  color: blueviolet;
+  background-color: #010002ec;
+  color: #8a2be2;
 }
 
 .card-bg {
@@ -30,8 +30,8 @@ body {
 }
 
 /* #####################
-NAVBAR CSS
-##################### */
+    NAVBAR CSS
+  ##################### */
 .navbar {
   /* margin-top: 1vh; */
   font-family: "Poppins", sans-serif;
@@ -58,30 +58,43 @@ NAVBAR CSS
   /* border: 1px solid; */
   color: rgb(172, 90, 248) !important;
 }
+
+/*  ###################
+    CROUSEL CSS 
+    ################### */
 .carousel-inner > .carousel-item > img {
-  height: 65vh;
+  height: 70vh;
   min-height: 350px;
   width: 100%;
+  object-fit: cover;
 }
 
 /* #####################
 FOOTER CSS
 ##################### */
 .footer {
-  background-color: #161722 !important;
+  margin-top: 15vh;
+  background-color: #1c1e3370 !important;
 }
 .footer .text-center {
   padding-bottom: 8px;
 }
-.footer a {
-  padding: 10px;
+.f-head {
+  letter-spacing: 8px !important;
+}
+.f-link {
   text-decoration: none;
-  color: white;
+  color: rgb(206, 206, 206) !important;
 }
-.footer a:hover {
-  color: rgb(198, 136, 255);
+.f-link:hover {
+  color: rgb(209, 110, 255) !important;
 }
-
+s-icons {
+  color: red !important;
+}
+s-icons:hover {
+  transform: size scale(1.5) !important;
+}
 /* #####################
 PAGE NOT FOUND CSS
 ##################### */
@@ -113,9 +126,8 @@ PAGE NOT FOUND CSS
   padding: 8px;
   border-radius: 10px;
 }
-
 /* #####################
-CONTACT PAGE CSS
+info PAGE CSS
 ##################### */
 .contact-container {
   display: flex;
@@ -145,6 +157,10 @@ CONTACT PAGE CSS
   text-transform: uppercase;
   margin-bottom: 20px;
 }
+
+/* #####################
+Authentication
+##################### */
 
 .forgot-signin-signup a {
   padding: 10px;
@@ -229,7 +245,7 @@ CONTACT PAGE CSS
 /* PRODUCT CARD CSS */
 .product-card {
   border-radius: 20px;
-  background-color: #00000044 !important;
+  background-color: #44326136 !important;
   color: #ffffffda !important;
   h6 {
     color: rgba(255, 255, 255, 0.699);
@@ -249,15 +265,6 @@ CONTACT PAGE CSS
 }
 
 /* FILTERS CSS */
-.filter-title {
-  font-size: 14px;
-  color: #dcdcdc;
-  font-weight: bold;
-}
-.filter-items {
-  color: #dcdcdc !important;
-  font-size: 14px;
-}
 
 .card-dash {
   background-color: #31313120;
@@ -302,32 +309,13 @@ CONTACT PAGE CSS
   background-color: #ffffff4b;
 }
 
-/* TABLE CSS */
-
-.table-dark {
-  text-align: center;
-  border-radius: 20px; /* Rounded corners for the table */
-  overflow: hidden; /* Ensure rounded corners are visible */
-}
-
-/* TABLE ITEMS */
-.table-items {
-  color: #ffffffb9;
-  border: none;
-}
-
-/* Order haeading */
-.order-head {
-  color: rgb(187, 187, 187);
-}
-
 /* Landing page */
 .show-all {
   text-decoration: none;
   color: white;
 }
 .show-all:hover {
-  color: rgb(211, 211, 211);
+  color: rgb(228, 171, 255);
 }
 
 /*####################
@@ -362,7 +350,17 @@ viewer-desc {
   font-size: 18px !important;
   color: #ffffff9a;
 }
-
+/* download btn */
+.d-btn {
+  border-radius: 20px;
+  background-color: #8a2be2;
+  color: white;
+  border: none;
+}
+.d-btn:hover {
+  background-color: #821ee0;
+  color: white;
+}
 /* PHONE SIZE */
 /* PDF  PREVIEW */
 @media (max-width: 768px) {

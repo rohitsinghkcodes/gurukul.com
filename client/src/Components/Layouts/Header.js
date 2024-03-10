@@ -56,25 +56,32 @@ const Header = () => {
               <div
                 className="m-0"
                 style={{
-                  backgroundColor: "blueviolet",
-
-                  padding: "8px",
-                  borderRadius: "10px",
+                  color: "blueviolet",
+                  fontSize:"20px",
+                  fontWeight:"bold",
+                  padding: "8px"
                 }}
               >
-                PORTFOLIO
+                {"</> gurukulcse.com"}
               </div>
             </Link>
+            
+            <div className="searchBox">
+              <SearchComponent />
+            </div>
+
+            <ul className="navbar-nav  mb-2 mb-lg-0">
             <div className="">
               <ul className="navbar-nav  me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link to="/papers" className="nav-link">
-                    Research Papers
-                  </Link>
-                </li>
+               
                 <li className="nav-item">
                   <Link to={`/all-courses`} className="nav-link">
                     Courses
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/papers" className="nav-link">
+                    Research Papers
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -82,14 +89,8 @@ const Header = () => {
                     Notes
                   </Link>
                 </li>
-                
               </ul>
             </div>
-            <div className="searchBox">
-              <SearchComponent />
-            </div>
-
-            <ul className="navbar-nav  mb-2 mb-lg-0">
               {!auth.user ? (
                 <>
                   <li className="nav-item">

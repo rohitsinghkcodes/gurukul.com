@@ -21,27 +21,34 @@ const HomePage = () => {
             >
               <div
                 className="carousel-inner rounded-5"
-                style={{ height: "60vh" }}
+                style={{ height: "70vh" }}
               >
                 <div className="carousel-item active">
                   <img
-                    src="https://media.istockphoto.com/id/1284202542/vector/programming-language-python-conceptual-banner-education-coding-computer-language-python.jpg?s=612x612&w=0&k=20&c=DwTB320vMYH8MAnPjrwEeJqlWs1V4y10ExC0xcMmHig="
+                    src="https://raw.githubusercontent.com/rohitsinghkcodes/RESOURCES/master/gurukulcse/1.jpg"
                     className="d-block w-100"
-                    alt="..."
+                    alt="image1"
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src="https://www.shutterstock.com/image-vector/concept-computer-programming-developing-software-600nw-2149658893.jpg"
+                    src="https://raw.githubusercontent.com/rohitsinghkcodes/RESOURCES/master/gurukulcse/2.jpg"
                     className="d-block w-100"
-                    alt="..."
+                    alt="image2"
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src="https://img.freepik.com/premium-vector/colorful-banner-with-hands-working-computer-different-electronic-gadgets-devices-symbols-programming-software-development-program-coding_198278-4192.jpg"
+                    src="https://raw.githubusercontent.com/rohitsinghkcodes/RESOURCES/master/gurukulcse/3.jpg"
                     className="d-block w-100"
-                    alt="..."
+                    alt="image3"
+                  />
+                </div>
+                <div className="carousel-item">
+                  <img
+                    src="https://raw.githubusercontent.com/rohitsinghkcodes/RESOURCES/master/gurukulcse/4.jpg"
+                    className="d-block w-100"
+                    alt="image4"
                   />
                 </div>
               </div>
@@ -136,7 +143,7 @@ const HomePage = () => {
                 ))
               ) : (
                 <h4 className="text-center text-secondary">
-                  No result found for selected filters
+                  No courses found!
                 </h4>
               )}
             </div>

@@ -65,10 +65,8 @@ const YouTubePlayerPage = () => {
                   <a
                     href={paperData.pdfLink}
                     target="_blank"
-                    className="btn btn-info mt-2 py-3 px-4 "
-                    style={{
-                      borderRadius: "20px",
-                    }}
+                    className="btn btn-info mt-2 py-3 px-4 d-btn "
+                    
                   >
                     <FaDownload
                       size="25px"

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
@@ -6,6 +5,7 @@ import axios from "axios";
 import CourseForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
+import { Popconfirm } from "antd";
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -129,6 +129,8 @@ const CreateCategory = () => {
     }
   };
 
+
+
   return (
     <Layout title={"Dashboard - Categories"}>
       <div className=" container-fluid p-3">
@@ -203,14 +205,17 @@ const CreateCategory = () => {
                             >
                               Edit
                             </div>
-                            <div
-                              className="btn btn-sm btn-danger ms-2"
-                              onClick={() => {
-                                handleDelete(c._id);
-                              }}
+                            <Popconfirm
+                              title="Delete the task"
+                              description="Are you sure to delete this COURSE?"
+                              onConfirm={() => handleDelete(c._id)}
+                              okText="Yes"
+                              cancelText="No"
                             >
-                              Delete
-                            </div>
+                              <div className="btn btn-sm btn-danger ms-2">
+                                Delete
+                              </div>
+                            </Popconfirm>
                           </div>
                         </div>
                       </div>

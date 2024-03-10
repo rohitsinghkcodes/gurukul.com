@@ -6,7 +6,7 @@ import { Select } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
-const { Option } = Select;
+import { Popconfirm } from "antd";
 
 const ManagePapers = () => {
   const navigate = useNavigate();
@@ -69,6 +69,22 @@ const ManagePapers = () => {
     } catch (err) {
       console.log(err);
       toast.error("Something Went Wrong In Adding new paper!");
+    }
+  };
+
+  //! handle Delete Product Button
+  const handleDeleteBtn = async (id) => {
+    try {
+      const { data } = await axios.delete(`/api/v1/papers/delete-paper/${id}`);
+      if (data?.success) {
+        toast.success(`${data?.msg}`);
+        getAllPapers();
+      } else {
+        toast.error(`${data?.msg}`);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something Went Wrong In Deleting The Paper!");
     }
   };
 
@@ -165,11 +181,21 @@ const ManagePapers = () => {
                       <p className="card-text text-secondary">
                         Last updated {moment(rp.updatedAt).fromNow()}
                       </p>
+                      <div className="d-flex justify-content-end">
                       <div
-                        className="btn btn-sm btn-secondary w-100 rounded-3 "
+                        className="btn btn-sm btn-secondary w-50 rounded-3 "
                         onClick={() => navigate(`update-papers/${rp.slug}`)}
                       >
                         Edit
+                      </div>
+                      <Popconfirm
+                        title="Are you sure, you want to delete this paper?"
+                        onConfirm={() => handleDeleteBtn(rp._id)}
+                        okText="Yes"
+                        cancelText="No"
+                      >
+                        <div className="btn btn-sm btn-danger w-50 rounded-3 ms-2">Delete</div>
+                      </Popconfirm>
                       </div>
                     </div>
                   </div>

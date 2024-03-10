@@ -80,28 +80,7 @@ const UpdateNotes = () => {
     }
   };
 
-  //! handle Delete Product Button
-  const handleDeleteNotesBtn = async (e) => {
-    e.preventDefault();
-    try {
-      const confirm = window.prompt(
-        'Type "yes" if you sure, you want to delete this?'
-      );
-      if (!confirm) return;
-      const { data } = await axios.delete(
-        `/api/v1/notes/delete-sub-notes/${id}`
-      );
-      if (data?.success) {
-        toast.success(`${data?.msg}`);
-        navigate("/dashboard/admin/manage-notes");
-      } else {
-        toast.error(`${data?.msg}`);
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error("Something while deleting notes!");
-    }
-  };
+ 
 
   return (
     <Layout title={"Dashboard - Products"}>
@@ -188,12 +167,7 @@ const UpdateNotes = () => {
                   >
                     Update notes
                   </button>
-                  <button
-                    className="btn btn-danger ms-2"
-                    onClick={handleDeleteNotesBtn}
-                  >
-                    Delete notes
-                  </button>
+                  
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const UpdatePaperDetails = () => {
@@ -75,27 +75,6 @@ const UpdatePaperDetails = () => {
     }
   };
 
-  //! handle Delete Product Button
-  const handleDeleteBtn = async (e) => {
-    e.preventDefault();
-    try {
-      const confirm = window.prompt(
-        'Type "yes" if you sure, you want to delete this?'
-      );
-      if (!confirm) return;
-      const { data } = await axios.delete(`/api/v1/papers/delete-paper/${id}`);
-      if (data?.success) {
-        toast.success(`${data?.msg}`);
-        navigate("/dashboard/admin/manage-papers");
-      } else {
-        toast.error(`${data?.msg}`);
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error("Something Went Wrong In Deleting The Paper!");
-    }
-  };
-
   return (
     <Layout title={"Dashboard - Products"}>
       <div className="container-fluid p-3">
@@ -145,12 +124,6 @@ const UpdatePaperDetails = () => {
                     onClick={handleUpdatePaperBtn}
                   >
                     Update Details
-                  </button>
-                  <button
-                    className="btn btn-danger ms-4 "
-                    onClick={handleDeleteBtn}
-                  >
-                    Detete
                   </button>
                 </div>
               </div>

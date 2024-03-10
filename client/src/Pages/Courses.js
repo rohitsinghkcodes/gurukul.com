@@ -18,7 +18,10 @@ const Courses = () => {
                 to={`/course/videos/${product.slug}`}
                 className="product-link"
               >
-                <div className="card product-card mt-2" style={{ width: "19rem" }}>
+                <div
+                  className="card product-card mt-2"
+                  style={{ width: "19rem" }}
+                >
                   <div
                     style={{
                       borderRadius: "20px 20px 0 0",
@@ -61,9 +64,7 @@ const Courses = () => {
               </Link>
             ))
           ) : (
-            <h4 className="text-center text-secondary">
-              No result found for selected filters
-            </h4>
+            <h4 className="text-center text-secondary">No courses found!</h4>
           )}
         </div>
       </div>

@@ -87,20 +87,12 @@ const Notes = () => {
                     <a
                       href={n.pdfLink}
                       target="_blank"
-                      className="btn btn-info py-3 px-4 "
+                      className="btn px-4 d-btn"
                       style={{
-                        width: "100%",
-                        borderRadius: "20px",
+                        width: "100%"
                       }}
                     >
-                      <FaDownload
-                        size="25px"
-                        style={{
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      />{" "}
-                      &ensp; Download pdf
+                      Download pdf
                     </a>
                   </div>
                 </div>
