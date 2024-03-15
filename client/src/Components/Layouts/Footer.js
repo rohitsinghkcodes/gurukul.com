@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaInstagram, FaFacebookF, FaGithub,FaLinkedinIn  } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaGithub,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
@@ -48,7 +53,6 @@ const Footer = () => {
                       <FaGithub /> &ensp;Github
                     </p>
                   </Link>
-                 
                 </div>
                 <div className="col">
                   <Link
@@ -75,7 +79,7 @@ const Footer = () => {
                     className="f-link"
                   >
                     <p>
-                    <FaLinkedinIn /> &ensp;Linkedin
+                      <FaLinkedinIn /> &ensp;Linkedin
                     </p>
                   </Link>
                   <Link to={SMLinks.twitter} target="_blank" className="f-link">

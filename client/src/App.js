@@ -25,6 +25,7 @@ import ManageNotes from "./Pages/Admin/ManageNotes.js";
 import UpdatePaperDetails from "./Pages/Admin/UpdatePaperDetails.js";
 import UpdateNotes from "./Pages/Admin/UpdateNotes.js";
 import AdminProfile from "./Pages/Admin/AdminProfile.js";
+import Policy from "./Pages/Policy.js";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
+        <Route path="/policy" element={<Policy />} />
         <Route path="/*" element={<PagenotFound />} />
       </Routes>
     </>

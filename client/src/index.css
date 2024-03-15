@@ -129,30 +129,44 @@ PAGE NOT FOUND CSS
 /* #####################
 info PAGE CSS
 ##################### */
-.contact-container {
+.info-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
-.contact-image {
+.info-image {
   max-width: 50%; /* Adjust the width as needed */
   height: auto;
   margin-right: 30px;
 }
 
-.contact-details {
-  font-size: 20px;
+.info-details {
+  font-size: 18px;
   font-family: "Poppins", sans-serif;
   text-align: left;
-  background-color: #2323233d; /* Light gray background color, adjust as needed */
-  padding: 20px;
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth effect, adjust as needed */
+  background-color: #27193d3d; /* Light gray background color, adjust as needed */
+  padding: 30px;
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  h3 {
+    font-size: 25px;
+  }
+  p {
+    color: rgba(255, 255, 255, 0.699);
+    margin-bottom: 25px;
+  }
+  ul {
+    color: rgba(255, 255, 255, 0.699);
+    li {
+      margin-bottom: 10px;
+      
+    }
+  }
 }
 
-.contact-details h2 {
+.info-details h2 {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 20px;
