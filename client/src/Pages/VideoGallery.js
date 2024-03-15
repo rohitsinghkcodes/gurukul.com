@@ -2,8 +2,9 @@ import Layout from "../Components/Layouts/Layout";
 import ReactPlayer from "react-player/lazy";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Spin } from "antd";
 
 const VideoGallery = () => {
   const params = useParams();
@@ -11,7 +12,7 @@ const VideoGallery = () => {
   const [videosList, setVideosList] = useState([]);
   const [course, setCourse] = useState("");
   const [video, setVideo] = useState({});
-
+  const [loading, setLoading] = useState(true);
   //*GET ALL VIDEOS
   const getAllVideos = async () => {
     try {
@@ -19,6 +20,7 @@ const VideoGallery = () => {
         `/api/v1/videos/course-video/${params.slug}`
       );
       if (data?.success) {
+        setLoading(false);
         setVideosList(data?.videos);
         setCourse(data?.course.name);
         setVideo(data?.videos[0]);
@@ -49,11 +51,11 @@ const VideoGallery = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={`${video?.name} | gurukulcse`}>
       <div className="m-4">
+        {loading === true && <Spin spinning={loading} size="large" fullscreen />}
         {videosList.length > 0 ? (
           <div className="row">
-           
             <div className="col-md-8">
               <div className="player-container">
                 <ReactPlayer

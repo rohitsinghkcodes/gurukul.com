@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import { Select } from "antd";
+import { Select, Spin } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ReactPlayer from "react-player";
@@ -13,6 +13,7 @@ const CourseVideos = () => {
   const navigate = useNavigate();
   const [videosList, setVideosList] = useState([]);
   const [course, setCourse] = useState("");
+  const [loading, setLoading] = useState(true);
 
   //*GET ALL VIDEOS
   const getAllVideos = async () => {
@@ -23,6 +24,7 @@ const CourseVideos = () => {
       if (data?.success) {
         setVideosList(data?.videos);
         setCourse(data?.course.name);
+        setLoading(false);
       }
     } catch (err) {
       console.log(err);
@@ -36,12 +38,17 @@ const CourseVideos = () => {
   }, []);
 
   return (
-    <Layout>
-      <div className=" mt-4 container">
+    <Layout title={"Dashboard - Course Videos"}>
+      <div  className=" mt-4 container">
+        <Spin spinning={loading} size="large" fullscreen />
+
         <h1>Course: {course}</h1>
         <div className="d-flex flex-wrap">
           {videosList.map((v) => (
-            <div className="card m-2 product-card" style={{ width: "19rem", overflow:"hidden" }}>
+            <div
+              className="card m-2 product-card"
+              style={{ width: "19rem", overflow: "hidden" }}
+            >
               <div className="d-flex justify-content-center rounded-5">
                 <ReactPlayer
                   url="https://www.youtube.com/watch?v=7KDRqBpT8NA"

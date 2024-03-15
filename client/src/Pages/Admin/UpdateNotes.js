@@ -4,6 +4,7 @@ import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Spin } from "antd";
 
 const UpdateNotes = () => {
   const params = useParams();
@@ -13,6 +14,7 @@ const UpdateNotes = () => {
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
   const [id, setId] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const getSingleNotes = async () => {
     try {
@@ -24,6 +26,7 @@ const UpdateNotes = () => {
         setDescription(data.notes.description);
         setLink(data.notes.pdfLink);
         setId(data.notes._id);
+        setLoading(false);
       }
     } catch (error) {
       toast.error("Something went wrong while fetching notes!");
@@ -80,10 +83,9 @@ const UpdateNotes = () => {
     }
   };
 
- 
-
   return (
-    <Layout title={"Dashboard - Products"}>
+    <Layout title={"Dashboard - Update Notes"}>
+      <Spin spinning={loading} size="large" fullscreen />
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
@@ -167,7 +169,6 @@ const UpdateNotes = () => {
                   >
                     Update notes
                   </button>
-                  
                 </div>
               </div>
             </div>

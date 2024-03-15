@@ -4,17 +4,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
-import { FaDownload } from "react-icons/fa6";
+import { Spin } from "antd";
 
 const Notes = () => {
   const [allSubNotes, setAllSubNotes] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const getAllNotes = async () => {
     try {
       const { data } = await axios.get(`/api/v1/notes/get-all-notes`);
       if (data?.success) {
         setAllSubNotes(data.all_sub_notes);
+        setLoading(false);
       }
     } catch (error) {
       toast.error("Something went wrong while fethcing research papers!");
@@ -27,8 +29,9 @@ const Notes = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout title={"Notes | gurukulcse"}>
       <div className="container">
+        {<Spin spinning={loading} size="large" fullscreen />}
         <h3 className="ms-4 mt-5">All Notes</h3>
         <div className="d-flex flex-wrap">
           {allSubNotes.length > 0 ? (
@@ -89,7 +92,7 @@ const Notes = () => {
                       target="_blank"
                       className="btn px-4 d-btn"
                       style={{
-                        width: "100%"
+                        width: "100%",
                       }}
                     >
                       Download pdf

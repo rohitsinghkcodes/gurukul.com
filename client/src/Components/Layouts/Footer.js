@@ -1,40 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaInstagram, FaFacebookF, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaGithub,FaLinkedinIn  } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { IoMdMail, IoMdCall } from "react-icons/io";
+import { IoMdMail } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
+import { SMLinks } from "../../Helpers/socialMediaLinks.js";
 
 const Footer = () => {
   return (
-    // <footer className=" footer py-4 mt-4">
-    //   <ul className="nav justify-content-center border-dark  mb-3">
-    //     <li className="nav-item">
-    //       <Link to="/about">About</Link>
-    //     </li>
-    //     <li className="nav-item">
-    //       <Link to="/contact">Contact</Link>
-    //     </li>
-    //     <li className="nav-item">
-    //       <Link to="/policy">Privacy Policy</Link>
-    //     </li>
-    //   </ul>
-    //   <hr className="mx-5" />
-    //   <div className="d-flex container justify-content-between">
-    //     <h5 className="">All rights reserved &copy; gurukulcse.com</h5>
-    //     <div>
-    //       <div className="btn btn-outline-light rounded-5 py-2">
-    //         <FaInstagram />
-    //       </div>
-    //       <div className="btn btn-outline-light rounded-5 ms-2 py-2">
-    //         <FaFacebookF />
-    //       </div>
-    //       <div className="btn btn-outline-light rounded-5 ms-2 py-2">
-    //         <FaXTwitter />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </footer>
     <footer className="text-center footer">
       <section className>
         <div className="container text-center text-md-start pt-3">
@@ -70,23 +43,46 @@ const Footer = () => {
                     <IoMdMail />
                     &ensp;gurukulcse@gmail.com
                   </p>
-                  <p className="f-link">
-                    <FaInstagram /> &ensp;Instagram
-                  </p>
-                  <p className="f-link">
-                    <FaGithub /> &ensp;Github
-                  </p>
+                  <Link to={SMLinks.github} target="_blank" className="f-link">
+                    <p>
+                      <FaGithub /> &ensp;Github
+                    </p>
+                  </Link>
+                 
                 </div>
                 <div className="col">
-                  <p className="f-link">
-                    <FaInstagram /> &ensp;Instagram
-                  </p>
-                  <p className="f-link">
-                    <FaFacebookF /> &ensp;Facebook
-                  </p>
-                  <p className="f-link">
-                    <FaXTwitter /> &ensp;Twitter
-                  </p>
+                  <Link
+                    to={SMLinks.instagram}
+                    target="_blank"
+                    className="f-link"
+                  >
+                    <p>
+                      <FaInstagram /> &ensp;Instagram
+                    </p>
+                  </Link>
+                  <Link
+                    to={SMLinks.facebook}
+                    target="_blank"
+                    className="f-link"
+                  >
+                    <p>
+                      <FaFacebookF /> &ensp;Facebook
+                    </p>
+                  </Link>
+                  <Link
+                    to={SMLinks.linkedin}
+                    target="_blank"
+                    className="f-link"
+                  >
+                    <p>
+                    <FaLinkedinIn /> &ensp;Linkedin
+                    </p>
+                  </Link>
+                  <Link to={SMLinks.twitter} target="_blank" className="f-link">
+                    <p>
+                      <FaXTwitter /> &ensp;Twitter / X
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -97,7 +93,8 @@ const Footer = () => {
         className="text-center p-4"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        {"</> "}gurukulcse.com | &ensp;All rights reserved &copy; gurukulcse.com
+        {"</> "}gurukulcse.com&ensp; | &ensp;All rights reserved &copy;
+        gurukulcse.com
       </div>
     </footer>
   );

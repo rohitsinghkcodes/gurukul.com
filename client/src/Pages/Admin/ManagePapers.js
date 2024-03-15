@@ -6,7 +6,7 @@ import { Select } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
-import { Popconfirm } from "antd";
+import { Popconfirm , Spin} from "antd";
 
 const ManagePapers = () => {
   const navigate = useNavigate();
@@ -14,12 +14,15 @@ const ManagePapers = () => {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [researchPapers, setResearchPapers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   const getAllPapers = async () => {
     try {
       const { data } = await axios.get(`/api/v1/papers/get-all-papers`);
       if (data?.success) {
         setResearchPapers(data.papers);
+        setLoading(false)
       }
     } catch (error) {
       toast.error("Something went wrong while fethcing research papers!");
@@ -89,7 +92,7 @@ const ManagePapers = () => {
   };
 
   return (
-    <Layout title={"Dashboard - Products"}>
+    <Layout title={"Dashboard - Manage Papers"}>
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
@@ -139,6 +142,9 @@ const ManagePapers = () => {
               </div>
             </div>
             <h3 className="ms-4 mt-5">All Research Papers</h3>
+            <div className="d-flex justify-content-center">
+              <Spin spinning={loading} size="large" />
+            </div>
             <div className="d-flex flex-wrap justify-content-evenly mt-2">
               {researchPapers.length > 0 ? (
                 researchPapers?.map((rp) => (

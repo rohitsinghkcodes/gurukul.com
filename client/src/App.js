@@ -7,7 +7,7 @@ import PrivateRoute from "./Components/Routes/PrivateRoutes.js";
 import ForgotPassword from "./Pages/Auth/ForgotPassword.js";
 import AdminRoute from "./Components/Routes/AdminRoutes.js";
 import AdminDashboard from "./Pages/Admin/AdminDashboard.js";
-import CreateCourse from "./Pages/Admin/CreateCourse.js";
+import ManageCourses from "./Pages/Admin/ManageCourses.js";
 import CreateVideo from "./Pages/Admin/AddVideosToCourse.js";
 import Profile from "./Pages/User/Profile.js";
 import CoursesVideos from "./Pages/Admin/AllCoursesVideos.js";
@@ -15,7 +15,6 @@ import Search from "./Pages/Search.js";
 import ResearchPaperViewer from "./Pages/ResearchPaperViewer.js";
 import Courses from "./Pages/Courses.js";
 import Notes from "./Pages/Notes.js";
-import CategoryProduct from "./Pages/CoursesPlaylist__.js";
 import LandingPage from "./Pages/LandingPage.js";
 import ResearchPapers from "./Pages/ResearchPapers.js";
 import VideoGallery from "./Pages/VideoGallery.js";
@@ -25,13 +24,12 @@ import ManagePapers from "./Pages/Admin/ManagePapers.js";
 import ManageNotes from "./Pages/Admin/ManageNotes.js";
 import UpdatePaperDetails from "./Pages/Admin/UpdatePaperDetails.js";
 import UpdateNotes from "./Pages/Admin/UpdateNotes.js";
+import AdminProfile from "./Pages/Admin/AdminProfile.js";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/course/:slug" element={<CategoryProduct />} />
-
         <Route path="/" element={<LandingPage />} />
         <Route path="/papers" element={<ResearchPapers />} />
         <Route path="/course/videos/:slug" element={<VideoGallery />} />
@@ -52,9 +50,10 @@ function App() {
         {/* ADMIN ROUTES */}
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
-          <Route path="admin/create-course" element={<CreateCourse />} />
+          <Route path="admin/create-course" element={<ManageCourses />} />
           <Route path="admin/manage-papers" element={<ManagePapers />} />
           <Route path="admin/manage-notes" element={<ManageNotes />} />
+          <Route path="admin/profile" element={<AdminProfile />} />
           <Route
             path="admin/manage-papers/update-papers/:slug"
             element={<UpdatePaperDetails />}

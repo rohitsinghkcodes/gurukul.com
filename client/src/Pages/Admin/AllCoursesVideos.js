@@ -1,36 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layouts/Layout.js";
 import AdminMenu from "../../Components/Layouts/AdminMenu.js";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
 import useCourse from "../../hooks/useCourse.js";
+import { Spin } from "antd";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  //   const [image, setImage] = useState("")
+const CourseVideos = () => {
   const courses = useCourse();
+  const [loading, setLoading] = useState(true);
 
-  //*GET ALL PRODUCTS
-  const getAllProducts = async () => {
-    try {
-      const { data } = await axios.get("/api/v1/products/get-products");
-      if (data?.success) {
-        setProducts(data?.products);
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error("Something Went Wrong While Fetching The Product!");
-    }
-  };
-
-  //*LIFECYCLE METHOD
   useEffect(() => {
-    getAllProducts();
-  }, []);
-
+    if (courses.length) {
+      setLoading(false);
+    }
+  }, [courses]);
   return (
     <Layout title={"Dashboard - All Users"}>
+      <Spin spinning={loading} size="large" fullscreen />
+
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
@@ -63,4 +50,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default CourseVideos;

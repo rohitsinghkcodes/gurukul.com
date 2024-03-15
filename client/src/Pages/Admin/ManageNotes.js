@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
-import { Popconfirm } from "antd";
+import { Popconfirm, Spin } from "antd";
 
 const ManageNotes = () => {
   const navigate = useNavigate();
@@ -14,12 +14,14 @@ const ManageNotes = () => {
   const [link, setLink] = useState("");
   const [allSubNotes, setAllSubNotes] = useState([]);
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const getAllNotes = async () => {
     try {
       const { data } = await axios.get(`/api/v1/notes/get-all-notes`);
       if (data?.success) {
         setAllSubNotes(data.all_sub_notes);
+        setLoading(false);
       }
     } catch (error) {
       toast.error("Something went wrong while fethcing research papers!");
@@ -96,7 +98,7 @@ const ManageNotes = () => {
   };
 
   return (
-    <Layout title={"Dashboard - Products"}>
+    <Layout title={"Dashboard - Manage Notes"}>
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
@@ -174,6 +176,10 @@ const ManageNotes = () => {
               </div>
             </div>
             <h3 className="ms-4 mt-5">All Notes</h3>
+
+            <div className="d-flex justify-content-center">
+              <Spin spinning={loading} size="large" />
+            </div>
             <div className="d-flex flex-wrap">
               {allSubNotes.length > 0 ? (
                 allSubNotes?.map((n) => (

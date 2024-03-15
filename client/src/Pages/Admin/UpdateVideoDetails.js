@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../Components/Layouts/Layout";
 import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
-import { Select } from "antd";
+import { Select, Spin } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 const { Option } = Select;
-
 
 const UpdateVideoDetails = () => {
   const navigate = useNavigate();
@@ -15,10 +14,9 @@ const UpdateVideoDetails = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
-  const [course, setCourse] = useState("")
-  const [id, setId] = useState("")
-
-  
+  const [course, setCourse] = useState("");
+  const [id, setId] = useState("");
+  const [loading, setLoading] = useState(true);
 
   //*GET SINGLE video
   const getSingleProduct = async () => {
@@ -27,13 +25,12 @@ const UpdateVideoDetails = () => {
         `/api/v1/videos/get-single-video/${params.slug}`
       );
       if (data?.success) {
-        
         setName(data?.video.name);
         setId(data?.video._id);
         setDescription(data?.video.description);
         setCourse(data?.video.course._id);
-        setLink(data?.video.link)
-        
+        setLink(data?.video.link);
+        setLoading(false);
       }
     } catch (err) {
       console.log(err);
@@ -97,9 +94,7 @@ const UpdateVideoDetails = () => {
         'Type "yes" if you sure, you want to delete this product?'
       );
       if (!confirm) return;
-      const { data } = await axios.delete(
-        `/api/v1/videos/delete-video/${id}`
-      );
+      const { data } = await axios.delete(`/api/v1/videos/delete-video/${id}`);
       if (data?.success) {
         toast.success(`${data?.msg}`);
         navigate("/dashboard/admin/products");
@@ -113,7 +108,9 @@ const UpdateVideoDetails = () => {
   };
 
   return (
-    <Layout title={"Dashboard - Products"}>
+    <Layout title={"Dashboard - Update Video Details"}>
+      <Spin spinning={loading} size="large" fullscreen />
+
       <div className="container-fluid m-3 p-3">
         <div className="row">
           <div className="col-md-3">
@@ -123,7 +120,7 @@ const UpdateVideoDetails = () => {
             <div className="card card-dash p-5 rounded-5">
               <h3>Update Video Details</h3>
               <div className="m-1">
-              <Select
+                <Select
                   bordered={false}
                   placeholder="Select a course"
                   size="large"
@@ -141,7 +138,6 @@ const UpdateVideoDetails = () => {
                   ))}
                 </Select>
 
-                
                 <div className="mb-4">
                   <label className="form-label ">Video Title</label>
                   <input
@@ -167,9 +163,7 @@ const UpdateVideoDetails = () => {
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="form-label text-light">
-                    Video Link
-                  </label>
+                  <label className="form-label text-light">Video Link</label>
                   <input
                     type="string"
                     value={link}
@@ -178,10 +172,7 @@ const UpdateVideoDetails = () => {
                     onChange={(e) => setLink(e.target.value)}
                   />
                 </div>
-                
-               
 
-                
                 <div className="mb-4 ">
                   <button
                     className="btn btn-primary mx-3"

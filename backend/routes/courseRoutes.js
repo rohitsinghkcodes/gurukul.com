@@ -33,7 +33,7 @@ router.put(
   updateCourseController
 );
 
-//~ GET ALL CATEGORIES
+//~ GET ALL COURSE
 router.get("/get-courses", courseController);
 
 //~ GET SINGLE COURSE

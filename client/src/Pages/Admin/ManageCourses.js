@@ -6,8 +6,9 @@ import CourseForm from "../../Components/Form/CourseForm";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
 import { Popconfirm } from "antd";
+import { Spin } from "antd";
 
-const CreateCategory = () => {
+const ManageCourses = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -18,6 +19,7 @@ const CreateCategory = () => {
   const [image, setImage] = useState("");
   const [updatedImage, setUpdatedImage] = useState("");
   const [id, setId] = useState("");
+  const [loading, setLoading] = useState(true);
 
   //handle form
   const handleSubmit = async (e) => {
@@ -70,6 +72,7 @@ const CreateCategory = () => {
       const { data } = await axios.get("/api/v1/courses/get-courses");
       if (data?.success) {
         setCategories(data?.courses);
+        setLoading(false);
       }
     } catch (err) {
       console.log(err);
@@ -129,10 +132,8 @@ const CreateCategory = () => {
     }
   };
 
-
-
   return (
-    <Layout title={"Dashboard - Categories"}>
+    <Layout title={"Dashboard - Manage Courses"}>
       <div className=" container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
@@ -155,6 +156,10 @@ const CreateCategory = () => {
                 </div>
               </div>
               <h4 className="mt-4">Courses</h4>
+              <div className="d-flex justify-content-center">
+                <Spin spinning={loading} size="large" />
+              </div>
+
               <div className="d-flex flex-wrap ">
                 {categories.length < 1 ? (
                   <div>
@@ -250,4 +255,4 @@ const CreateCategory = () => {
   );
 };
 
-export default CreateCategory;
+export default ManageCourses;

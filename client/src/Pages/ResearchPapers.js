@@ -4,15 +4,19 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { Spin } from 'antd';
 
 const ResearchPapers = () => {
   const [researchPapers, setResearchPapers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   const getAllPapers = async () => {
     try {
       const { data } = await axios.get(`/api/v1/papers/get-all-papers`);
       if (data?.success) {
         setResearchPapers(data.papers);
+        setLoading(false)
       }
     } catch (error) {
       toast.error("Something went wrong while fethcing research papers!");
@@ -26,9 +30,11 @@ const ResearchPapers = () => {
 
   return (
     <>
-      <Layout>
+      <Layout title={"Research Papers | gurukulcse"}>
         <div className="container mt-5 text-poppins mb-5 ">
           <h1 className="mb-2 ms-4 ">Research Papers</h1>
+          {<Spin spinning={loading} size="large" fullscreen />}
+
           <div className="d-flex justify-content-center row mx-4 ">
             {researchPapers.map((rp) => (
               <Link

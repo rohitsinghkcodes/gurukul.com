@@ -4,6 +4,8 @@ import AdminMenu from "../../Components/Layouts/AdminMenu";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Spin } from 'antd';
+
 
 const UpdatePaperDetails = () => {
   const params = useParams();
@@ -12,6 +14,8 @@ const UpdatePaperDetails = () => {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [id, setId] = useState("");
+  const [loading, setLoading] = useState(true);
+
 
   const getSinglePaper = async () => {
     try {
@@ -23,6 +27,7 @@ const UpdatePaperDetails = () => {
         setDescription(data.paper.description);
         setLink(data.paper.pdfLink);
         setId(data.paper._id);
+        setLoading(false)
       }
     } catch (error) {
       toast.error("Something went wrong while fethcing research papers!");
@@ -76,7 +81,9 @@ const UpdatePaperDetails = () => {
   };
 
   return (
-    <Layout title={"Dashboard - Products"}>
+    <Layout title={"Dashboard - Update Paper Details"}>
+      <Spin spinning={loading} size="large" fullscreen />
+
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">

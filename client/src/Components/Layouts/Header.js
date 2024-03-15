@@ -134,9 +134,9 @@ const Header = () => {
                       // if user is admin
                       <ul className="dropdown-menu dropdown-menu-lg-end">
                         <li>
-                          <Link to="/profile" className="dropdown-item">
+                          {/* <Link to="/profile" className="dropdown-item">
                             <FaUserCircle /> &nbsp; Profile
-                          </Link>
+                          </Link> */}
                           <Link
                             to={`/dashboard/${
                               auth?.user?.role === 1 ? "admin" : "user"
