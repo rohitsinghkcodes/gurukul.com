@@ -58,10 +58,10 @@ const Profile = () => {
         setConfirmPassword("");
         setAuth({ ...auth, user: data?.updatedUser });
         //update local storage
-        let ls = localStorage.getItem("auth");
+        let ls = localStorage.getItem("gurukulcse-auth");
         ls = JSON.parse(ls);
         ls.user = data?.updatedUser;
-        localStorage.setItem("auth", JSON.stringify(ls));
+        localStorage.setItem("gurukulcse-auth", JSON.stringify(ls));
         toast.success(`${data?.msg}`, {
           style: {
             width: "350px", // Set the desired width

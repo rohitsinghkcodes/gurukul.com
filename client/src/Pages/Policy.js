@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../Components/Layouts/Layout.js";
-import { Link } from "react-router-dom";
 
 const Policy = () => {
   return (

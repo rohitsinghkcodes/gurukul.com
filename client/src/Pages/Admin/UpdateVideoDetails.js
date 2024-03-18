@@ -76,7 +76,7 @@ const UpdateVideoDetails = () => {
       );
       if (data?.success) {
         toast.success(`${data?.msg}`);
-        navigate("/dashboard/admin/products");
+        navigate("/dashboard/admin/course-videos");
       } else {
         toast.error(`${data?.msg}`);
       }

@@ -7,7 +7,6 @@ import { IoMdEye, IoMdEyeOff, IoMdClose } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import AdminMenu from "../../Components/Layouts/AdminMenu.js";
 
-
 const AdminProfile = () => {
   //context
   const [auth, setAuth] = useAuth();
@@ -60,10 +59,10 @@ const AdminProfile = () => {
         setConfirmPassword("");
         setAuth({ ...auth, user: data?.updatedUser });
         //update local storage
-        let ls = localStorage.getItem("auth");
+        let ls = localStorage.getItem("gurukulcse-auth");
         ls = JSON.parse(ls);
         ls.user = data?.updatedUser;
-        localStorage.setItem("auth", JSON.stringify(ls));
+        localStorage.setItem("gurukulcse-auth", JSON.stringify(ls));
         toast.success(`${data?.msg}`, {
           style: {
             width: "350px", // Set the desired width
@@ -86,7 +85,6 @@ const AdminProfile = () => {
 
   // check pin availability
   const availableDelivery = () => {
-
     setAddress(`${addLine}\n PIN: ${pin}`);
     setEditAddress(false);
     toast.info("Plase click update profile to confirm changes.", {

@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 
   //functions in which we can execute multiple functions
   useEffect(() => {
-    const data = localStorage.getItem("auth");
+    const data = localStorage.getItem("gurukulcse-auth");
     if (data) {
       const parseData = JSON.parse(data);
       setAuth({

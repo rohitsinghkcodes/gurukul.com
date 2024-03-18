@@ -36,7 +36,7 @@ const Login = () => {
         });
 
         // store auth details in local_storage
-        localStorage.setItem("auth", JSON.stringify(res.data));
+        localStorage.setItem("gurukulcse-auth", JSON.stringify(res.data));
 
         // navigate to homepage
         navigate(location.state || "/");

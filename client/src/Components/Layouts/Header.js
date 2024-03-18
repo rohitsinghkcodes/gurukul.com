@@ -22,7 +22,7 @@ const Header = () => {
     });
 
     //clearing the local storage
-    localStorage.removeItem("auth");
+    localStorage.removeItem("gurukulcse-auth");
     toast.success("Signed Out Successfully!");
   };
 
@@ -57,40 +57,39 @@ const Header = () => {
                 className="m-0"
                 style={{
                   color: "blueviolet",
-                  fontSize:"20px",
-                  fontWeight:"bold",
-                  padding: "8px"
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  padding: "8px",
                 }}
               >
                 {"</> gurukulcse.com"}
               </div>
             </Link>
-            
+
             <div className="searchBox">
               <SearchComponent />
             </div>
 
             <ul className="navbar-nav  mb-2 mb-lg-0">
-            <div className="">
-              <ul className="navbar-nav  me-auto mb-2 mb-lg-0">
-               
-                <li className="nav-item">
-                  <Link to={`/all-courses`} className="nav-link">
-                    Courses
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/papers" className="nav-link">
-                    Research Papers
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={`/all-notes`} className="nav-link">
-                    Notes
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              <div className="">
+                <ul className="navbar-nav  me-auto mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <Link to={`/all-courses`} className="nav-link">
+                      Courses
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/papers" className="nav-link">
+                      Research Papers
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={`/all-notes`} className="nav-link">
+                      Notes
+                    </Link>
+                  </li>
+                </ul>
+              </div>
               {!auth.user ? (
                 <>
                   <li className="nav-item">
