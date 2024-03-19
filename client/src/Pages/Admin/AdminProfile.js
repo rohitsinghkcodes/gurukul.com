@@ -50,7 +50,7 @@ const AdminProfile = () => {
       }
 
       const { data } = await axios.put(
-        "http://localhost:8080/api/v1/auth//update-profile",
+        "/api/v1/auth//update-profile",
         { name, email, password, phone, address }
       );
 
@@ -93,7 +93,7 @@ const AdminProfile = () => {
   };
 
   return (
-    <Layout title={"Dashboard - Manage Courses"}>
+    <Layout title={"Dashboard - Manage Courses | gurukulcse"}>
       <div className=" container-fluid p-3">
         <div className="row">
           <div className="col-md-3">

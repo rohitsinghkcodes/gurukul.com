@@ -20,7 +20,7 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/v1/auth/login/", {
+      const res = await axios.post("/api/v1/auth/login/", {
         email,
         password,
       });
@@ -50,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <Layout title="Login | E-Commerce App">
+    <Layout title="Login | gurukulcse">
       <div className="form-container">
         <form onSubmit={onSubmitHandler}>
           <h1 className="mb-5 text-center">Sign In</h1>

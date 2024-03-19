@@ -48,10 +48,13 @@ const Profile = () => {
         }
       }
 
-      const { data } = await axios.put(
-        "http://localhost:8080/api/v1/auth//update-profile",
-        { name, email, password, phone, address }
-      );
+      const { data } = await axios.put("/api/v1/auth//update-profile", {
+        name,
+        email,
+        password,
+        phone,
+        address,
+      });
 
       if (data?.success) {
         setPassword("********");
@@ -104,7 +107,7 @@ const Profile = () => {
   };
 
   return (
-    <Layout title={"Dashboard - Profile"}>
+    <Layout title={"Profile | gurukulcse"}>
       <div className="form-container">
         {(editName || editPassword || editPhone || editAddress2) && (
           <div className="alert alert-warning py-2" role="alert">

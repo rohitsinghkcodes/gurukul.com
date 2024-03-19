@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaDownload } from "react-icons/fa6";
 import Layout from "../Components/Layouts/Layout";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const YouTubePlayerPage = () => {
   const params = useParams();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const [paperData, setPaperData] = useState([]);
 
   const getAllPaperData = async () => {
@@ -29,7 +27,7 @@ const YouTubePlayerPage = () => {
     //eslint-disable-next-line
   }, []);
   return (
-    <Layout>
+    <Layout title={"Research Papers | gurukulcse"}>
       <div className="m-5">
         <div className="card rounded-5 bg-transparent text-light border-0">
           <div className="row ">
@@ -44,6 +42,7 @@ const YouTubePlayerPage = () => {
             </h5>
             <div className="col-md-5 ">
               <iframe
+                title={paperData._id}
                 src={`${paperData.pdfLink}preview`}
                 style={{ width: "100%", minHeight: "500px" }} // Adjust minHeight as per your requirements
                 allow="autoplay"
@@ -63,10 +62,10 @@ const YouTubePlayerPage = () => {
                 </p>
                 <div className="text-center d-flex justify-content-between">
                   <a
+                    rel="noopener noreferrer"
                     href={paperData.pdfLink}
                     target="_blank"
                     className="btn btn-info mt-2 py-3 px-4 d-btn "
-                    
                   >
                     <FaDownload
                       size="25px"
